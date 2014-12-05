@@ -65,7 +65,7 @@ app.controller("MapController", [ "$scope", "$http", "leafletData", "stationServ
 		            return new L.marker(latlng, {icon: L.icon(icon)});
 		        },
 		        onEachFeature: function (feature, layer) {
-		            layer.bindPopup(feature.properties["Station Name"] + ": " + feature.properties["Line"]);
+		            layer.bindPopup("<div style='text-align: center'><div style='font-weight:bold'>" + feature.properties["Station Name"] + "</div>Line: " + feature.properties["Line"] + "</div>");
 
 		            layer.on("click", function(e){
     					activeStationService.setActiveStationByGeoJSON(e.target.feature);
