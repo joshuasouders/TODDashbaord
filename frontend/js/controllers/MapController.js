@@ -5,7 +5,7 @@ app.controller("MapController", [ "$scope", "$http", "leafletData", "stationServ
 			map.setView([39.368087, -76.736899], 13);
 
 			map.eachLayer(function(layer){
-				if(layer._url == "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"){
+				if(layer._url == "//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"){
 					map.removeLayer(layer);
 				}
 			});
@@ -14,13 +14,12 @@ app.controller("MapController", [ "$scope", "$http", "leafletData", "stationServ
 
 
 			$scope.$on('newActiveStation', function() {
-				var activeStationName = activeStationService.getActiveStation().properties["Station Name"];
+				var activeStationName = activeStationService.getActiveStation()["Station Name"];
 
 				map.eachLayer(function(layer){
-					if(typeof(layer.feature) != "undefined"){
-						if(layer.feature.properties["Station Name"] == activeStationName){
-							console.log(map.getSize());
-							map.setView(layer.getLatLng(), 14, {reset:true});
+					if(typeof(layer.options.values) != "undefined"){
+						if(layer.options.values["Station Name"] == activeStationName){
+							map.setView([layer.options.values["Latitude"], layer.options.values["Longitude"]], 14, {reset:true});
 							layer.openPopup();
 						}
 					}
@@ -42,18 +41,16 @@ app.controller("MapController", [ "$scope", "$http", "leafletData", "stationServ
     	iconUrl:'frontend/img/icon/blue.png'
     }
 
-   	$scope.$on('stationServiceReady', function() {
+   	$scope.$on('stationServiceReady', function() {   	
+   		leafletData.getMap("map").then(
+    		function (map) {
+    			var stations = stationService.getJSON();
 
-   		activeStationService.setActiveStationByGeoJSON(stationService.getGeoJSON().features[0]);
-
-    	angular.extend($scope, $http, leafletData, activeStationService, {
-            geojson: {
-            	data: stationService.getGeoJSON(),
-                pointToLayer: function(feature, latlng) {
-                	var icon;
+    			for(var i = 0; i < stations.length; i++){
+    				var icon;
 
                 	for (var attrname in baseIconSettings){
-                		if(feature.properties["Parking Score"] == "3"){
+                		if(stations[i]["Rail Type 1"] == "Light Rail"){
                 			redIcon[attrname] = baseIconSettings[attrname];
                 			icon = redIcon;
                 		}
@@ -62,16 +59,19 @@ app.controller("MapController", [ "$scope", "$http", "leafletData", "stationServ
                 			icon = blueIcon;
                 		}
                 	}
-		            return new L.marker(latlng, {icon: L.icon(icon)});
-		        },
-		        onEachFeature: function (feature, layer) {
-		            layer.bindPopup("<div style='text-align: center'><div style='font-weight:bold'>" + feature.properties["Station Name"] + "</div>Line: " + feature.properties["Line"] + "</div>");
+		            var marker = new L.marker([stations[i]["Latitude"], stations[i]["Longitude"]], {icon: L.icon(icon), values: stations[i]});
 
-		            layer.on("click", function(e){
-    					activeStationService.setActiveStationByGeoJSON(e.target.feature);
+		            marker.bindPopup("<div style='text-align: center'><div style='font-weight:bold'>" + stations[i]["Station Name"] + "</div>Line: " + stations[i]["Rail Type 1"] + "</div>");
+
+		            marker.on("click", function(e){
+    					activeStationService.setActiveStationByJSON(e.target.options.values);
 		            });
-		        }
-            }
-        });
+
+		            marker.addTo(map);
+    			}
+
+    			activeStationService.setActiveStationByJSON(stations[2]);
+    		}
+    	);
     });
 }]);

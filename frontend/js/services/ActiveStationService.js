@@ -1,18 +1,18 @@
 app.service('activeStationService', ["$http", "$rootScope", "stationService", function($http, $rootScope, stationService) {
 	var activeStation;
 
-	this.setActiveStationByGeoJSON = function(obj) {
+	this.setActiveStationByJSON = function(obj) {
 	    activeStation = obj;
 
 	    $rootScope.$broadcast('newActiveStation');
 	}
 
 	this.setActiveStationByName = function(obj) {
-	    var stationGeoJSON = stationService.getGeoJSON();
+	    var stationJSON = stationService.getJSON();
 	    
-	    for(var i = 0; i < stationGeoJSON.length; i++){
-	    	if(stationGeoJSON.features[i].properties.name == obj){
-	    		activeStation = stationGeoJSON.features[i];
+	    for(var i = 0; i < stationJSON.length; i++){
+	    	if(stationGeoJSON[i].name == obj){
+	    		activeStation = stationJSON[i];
 	    		break;
 	    	}
 	    }
@@ -24,8 +24,9 @@ app.service('activeStationService', ["$http", "$rootScope", "stationService", fu
 	    return activeStation;
 	}
 
+
 	return {
-		setActiveStationByGeoJSON: this.setActiveStationByGeoJSON,
+		setActiveStationByJSON: this.setActiveStationByJSON,
 		setActiveStationByName: this.setActiveStationByName,
 	    getActiveStation: this.getActiveStation
 	};

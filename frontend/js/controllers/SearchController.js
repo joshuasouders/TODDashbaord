@@ -2,17 +2,20 @@ app.controller('SearchController', ['$scope', 'stationService', 'activeStationSe
 	$scope.selectedStation = {};
 
 	$scope.$on('stationServiceReady', function() {
-		$scope.stationGeoJSON = stationService.getGeoJSON();
+		$scope.stationJSON = stationService.getJSON();
 	});
 
 	$scope.$on('newActiveStation', function() {
-		//console.log(activeStationService.getActiveStation().properties["Station Name"]);
 		$scope.selectedStation.selected = activeStationService.getActiveStation();
 	});
 
+	$scope.groupByFunction = function(item){
+		return item["Rail Type 1"];
+	}
+
 	$scope.$watch('selectedStation.selected', function() {
 		if(typeof($scope.selectedStation.selected) != "undefined"){
-			activeStationService.setActiveStationByGeoJSON($scope.selectedStation.selected);
+			activeStationService.setActiveStationByJSON($scope.selectedStation.selected);
        	}
    });
 }]);

@@ -1,182 +1,209 @@
 <!doctype html>
 <html>
-     <head>
-          <meta charset="utf-8">
-          <title>Transit Oriented Development Dashboard</title>
+  <head>
+    <meta charset="utf-8">
+    <title>Transit Oriented Development Dashboard</title>
 
-          <!--CSS-->
-          <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-          <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
-          <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">
-          <link rel="stylesheet" href="bower_components/nvd3/nv.d3.css"/>
-          <link rel="stylesheet" href="bower_components/ui-select/src/select.css"/>
-          <link rel="stylesheet" href="bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
-          <link rel="stylesheet" href="frontend/style/style.css">
-     </head>
-     <body ng-app="StationMapDashboard">
-          <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-           <div class="container">
-             <div class="navbar-header">
-               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                 <span class="sr-only">Toggle navigation</span>
-                 <span class="icon-bar"></span>
-                 <span class="icon-bar"></span>
-                 <span class="icon-bar"></span>
-               </button>
-               <img src="frontend/img/mdlogo.png" id="flag"/>
-               <a class="navbar-brand title-bold" href="#">
-                    &nbspTransit Oriented Development Dashboard
-               </a>
-             </div>
-             <div id="navbar" class="navbar-collapse collapse">
-               <ul class="nav navbar-nav">
-                 <li class="active"><a href="#">Home</a></li>
-                 <li><a href="#about" data-toggle="modal" data-target="#about">About</a></li>
-                 <li><a href="#contact" data-toggle="modal" data-target="#contact">Contact</a></li>
-                 <li><a href="#howto" data-toggle="modal" data-target="#howto">How To Use</a></li>
-               </ul>
-               <div ng-controller="SearchController">
-	            	<ui-select ng-model="selectedStation.selected" id="search" style="width: 300px;">
-					    <ui-select-match placeholder="Search">{{$select.selected.properties['Station Name']}}</ui-select-match>
-					    <ui-select-choices repeat="station in stationGeoJSON.features | filter: $select.search">
-					    	<div ng-bind-html="station.properties['Station Name'] | highlight: $select.search">
-					    		{{station.properties['Station Name']}}
-					    	</div>
-					    </ui-select-choices>
-				  	</ui-select>
-			    </div>
-             </div>
-           </div>
-         </nav>
-          <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title" id="myModalLabel">About Transit Oriented Development</h4>
-                </div>
-                <div class="modal-body">
-                    Here we can put any information that we want the user to know about the website, including text, pictures, videos, etc.
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
+    <!--CSS-->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="bower_components/nvd3/nv.d3.css"/>
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.min.css"/>
+    <link rel="stylesheet" href="frontend/style/style.css">
+  </head>
+  <body ng-app="TODDashboard">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+     <div class="container">
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <img src="frontend/img/mdlogo.png" id="flag"/>
+         <a class="navbar-brand title-bold long-title" href="#">
+          &nbspTransit Oriented Development Dashboard
+        </a>
+        <a class="navbar-brand title-bold short-title" href="#">
+          TOD Dashboard
+        </a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+       <ul class="nav navbar-nav">
+         <li class="active"><a href="#">Home</a></li>
+         <li><a href="#about" data-toggle="modal" data-target="#about">About</a></li>
+         <li><a href="#contact" data-toggle="modal" data-target="#contact">Contact</a></li>
+         <li><a href="#howto" data-toggle="modal" data-target="#howto">How To Use</a></li>
+       </ul>
+      <div ng-controller="SearchController" class="search-nav">
+        <ui-select ng-model="selectedStation.selected" id="search" style="width: 300px;">
+          <ui-select-match placeholder="Search">{{$select.selected['Station Name']}}</ui-select-match>
+          <ui-select-choices group-by="groupByFunction" repeat="station in stationJSON | filter: $select.search">
+            <div ng-bind-html="station['Station Name'] | highlight: $select.search">
+              {{station['Station Name']}}
             </div>
-          </div>
-          <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Contact</h4>
-                </div>
-                <div class="modal-body">
-                    This can be a contact form that links up to an email address that is regularly monitored.
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal fade" id="howto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Contact</h4>
-                </div>
-                <div class="modal-body">
-                    This popup contains instructions on how to use the site as well as a disclaimer
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="side-panel-container">
-               <div class="left-div">
-                    <div class="header overall-header" ng-controller="TitleController">
-                         <h3 class="title-bold">{{title}}</h3>
-                    </div>
-                    <div role="tabpanel">
+      `   </ui-select-choices>
+        </ui-select>
+       </div>
+      </div>
+    </div>
+  </nav>
+  <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">About Transit Oriented Development</h4>
+        </div>
+        <div class="modal-body">
+          Here we can put any information that we want the user to know about the website, including text, pictures, videos, etc.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Contact</h4>
+        </div>
+        <div class="modal-body">
+          This can be a contact form that links up to an email address that is regularly monitored.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="howto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Contact</h4>
+        </div>
+        <div class="modal-body">
+          This popup contains instructions on how to use the site as well as a disclaimer
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="side-panel-container">
+    <div class="left-div">
+      <div class="header overall-header" ng-controller="TitleController">
+       <h3 class="title-bold station-title">{{title}}</h3>
+       <div ng-controller="SearchController" class="search-small">
+        <ui-select ng-model="selectedStation.selected" id="search">
+        <ui-select-match placeholder="Search">{{$select.selected['Station Name']}}</ui-select-match>
+        <ui-select-choices group-by="groupByFunction" repeat="station in stationJSON | filter: $select.search">
+        <div ng-bind-html="station['Station Name'] | highlight: $select.search">
+          {{station['Station Name']}}
+        </div>
+      </ui-select-choices>
+    </ui-select>
+  </div>
+  </div>
+  <div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active panel-tab" id="score-button" onclick="$('#exampleId > svg').width($('#score').width());"><a href="#score" aria-controls="score" role="tab" data-toggle="tab" class="panel-tab-text">Category Score</a></li>
+      <li role="presentation" class="panel-tab"><a href="#data" aria-controls="data" role="tab" data-toggle="tab" class="panel-tab-text">Data</a></li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="score">
+       <div style="height:300px;" ng-controller="ScoreChartController">
+        <nvd3-multi-bar-horizontal-chart
+        data="exampleData"
+        id="exampleId"
+        height="300"
+        showXAxis="true"
+        showYAxis="true"
+        margin="{left:150}"
+        color="getColor()"
+        forcey="[0,5]"
+        tooltips="true"
+        >
+        <svg></svg>
+      </nvd3-multi-bar-horizontal-chart>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="data" ng-controller="DataPanelController">
+    <div class="panel panel-default">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Train Lines</td>
+            <td>{{trainLines}}</td>
+          </tr>
+          <tr>
+            <td>Bus Lines</td>
+            <td>{{busLines}}</td>
+          </tr>
+          <tr>
+            <td>Local Population</td>
+            <td>{{localPopulation}}</td>
+          </tr>
+          <tr>
+            <td>Parking Spaces</td>
+            <td>{{parkingSpaces}}</td>
+          </tr>
+          <tr>
+            <td>Bike Parking Spaces</td>
+            <td>{{bikeParkingSpaces}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div id="footer" class-"nav-justified">
+   <a href="http://mta.maryland.gov/"><img src="frontend/img/mtalogo.png" class="footer-logo"></a>
+   <a href="http://http://www.mdot.maryland.gov/"><img src="frontend/img/mdotlogo.png" class="footer-logo"></a>
+  </div>
+  </div>
 
-                      <!-- Nav tabs -->
-                      <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active panel-tab"><a href="#score" aria-controls="score" role="tab" data-toggle="tab" class="panel-tab-text">Category Score</a></li>
-                        <li role="presentation" class="panel-tab"><a href="#data" aria-controls="data" role="tab" data-toggle="tab" class="panel-tab-text">Data</a></li>
-                      </ul>
+  <div class="right-div">
+    <div id="map-container" ng-controller="MapController">
+     <leaflet id="map" defaults="defaults"></leaflet>
+   </div>
+  </div>
+  </div>
 
-                      <!-- Tab panes -->
-                      <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="score">
-                             <div ng-controller="ScoreChartController" style="height:300px; width: 100%;">
-                                  <nvd3-multi-bar-horizontal-chart
-                                     data="exampleData"
-                                     id="exampleId"
-                                     showXAxis="true"
-                                     showYAxis="true"
-                                     margin="{left:150}"
-                                     color="getColorPallete()"
-                                     forcey="[0,5]"
-                                     >
-                                        <svg></svg>
-                                   </nvd3-multi-bar-horizontal-chart>
-                              </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="data">
-                         <h5>This tab will be populated with station specific TOD data</h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="footer" class-"nav-justified">
-                         <a href="http://mta.maryland.gov/"><img src="frontend/img/mtalogo.png" class="footer-logo"></a>
-                         <a href="http://http://www.mdot.maryland.gov/"><img src="frontend/img/mdotlogo.png" class="footer-logo"></a>
-                    </div>
-               </div>
+  <!--JS Libraries-->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/bootstrap/js/tab.js"></script>
+  <script src="bower_components/angular-ui-select/dist/select.min.js"></script>
+  <script src="bower_components/leaflet/dist/leaflet.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/nvd3/nv.d3.js"></script>
+  <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+  <script src="bower_components/angular-leaflet/dist/angular-leaflet-directive.min.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 
-               <div class="right-div">
-                    <div id="map-container" ng-controller="MapController">
-                         <leaflet id="map" defaults="defaults" geojson="geojson"></leaflet>
-                    </div>
-               </div>
-          </div>
+  <!--Angular Application-->
+  <script src="frontend/js/app.js"></script>
 
-          <!--JS Libraries-->
-          <script src="bower_components/angular/angular.js"></script>
-          <script src="bower_components/jquery/dist/jquery.min.js"></script>
-          <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-          <script src="bower_components/bootstrap/js/tab.js"></script>
-          <script src="bower_components/ui-select/src/select.js"></script>
-          <script src="bower_components/leaflet/dist/leaflet.js"></script>
-          <script src="bower_components/d3/d3.js"></script>
-          <script src="bower_components/nvd3/nv.d3.js"></script>
-          <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
-          <script src="bower_components/angular-leaflet/dist/angular-leaflet-directive.min.js"></script>
-          <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <!--Angular Services-->
+  <script src="frontend/js/services/StationService.js"></script>
+  <script src="frontend/js/services/ActiveStationService.js"></script>
 
-          <!--Angular Application-->
-          <script src="frontend/js/app.js"></script>
-
-          <!--Angular Services-->
-          <script src="frontend/js/services/StationService.js"></script>
-          <script src="frontend/js/services/ActiveStationService.js"></script>
-
-          <!--Angular Controllers-->
-        <!--  <script src="frontend/js/controllers/controller.js"></script>-->
-          <script src="frontend/js/controllers/MapController.js"></script>
-          <script src="frontend/js/controllers/TitleController.js"></script>
-          <script src="frontend/js/controllers/ScoreChartController.js"></script>
-          <script src="frontend/js/controllers/SearchController.js"></script>
-
-
-          <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-          <!--[if lt IE 9]>
-               <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-               <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-          <![endif]-->
-
-     </body>
+  <!--Angular Controllers-->
+  <script src="frontend/js/controllers/MapController.js"></script>
+  <script src="frontend/js/controllers/TitleController.js"></script>
+  <script src="frontend/js/controllers/ScoreChartController.js"></script>
+  <script src="frontend/js/controllers/DataPanelController.js"></script>
+  <script src="frontend/js/controllers/SearchController.js"></script>
+  </body>
 </html>
