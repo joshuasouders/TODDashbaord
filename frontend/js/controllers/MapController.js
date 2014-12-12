@@ -29,8 +29,8 @@ app.controller("MapController", [ "$scope", "$http", "leafletData", "stationServ
     );
 
     var baseIconSettings = {  
-        iconSize:[20, 20],
-        iconAnchor:[12, 0]
+        iconSize:[15, 15],
+        iconAnchor:[7, 0]
     };
 
     var redIcon = {
@@ -39,6 +39,22 @@ app.controller("MapController", [ "$scope", "$http", "leafletData", "stationServ
 
     var blueIcon = {
     	iconUrl:'frontend/img/icon/blue.png'
+    }
+
+    var greenIcon = {
+        iconUrl:'frontend/img/icon/green.png'
+    }
+
+    var orangeIcon = {
+        iconUrl:'frontend/img/icon/orange.png'
+    }
+
+    var lightblueIcon = {
+        iconUrl:'frontend/img/icon/lightblue.png'
+    }
+
+    var yellowIcon = {
+        iconUrl:'frontend/img/icon/yellow.png'
     }
 
    	$scope.$on('stationServiceReady', function() {   	
@@ -54,10 +70,26 @@ app.controller("MapController", [ "$scope", "$http", "leafletData", "stationServ
                 			redIcon[attrname] = baseIconSettings[attrname];
                 			icon = redIcon;
                 		}
-                		else{
+                		else if (stations[i]["Rail Type 1"] == "MARC: Penn Line"){
                 			blueIcon[attrname] = baseIconSettings[attrname];
                 			icon = blueIcon;
                 		}
+                        else if (stations[i]["Rail Type 1"] == "MARC: Brunswick Line"){
+                            greenIcon[attrname] = baseIconSettings[attrname];
+                            icon = greenIcon;
+                        }
+                        else if (stations[i]["Rail Type 1"] == "WMATA Metro"){
+                            orangeIcon[attrname] = baseIconSettings[attrname];
+                            icon = orangeIcon;
+                        }
+                        else if (stations[i]["Rail Type 1"] == "MARC: Camden Line"){
+                            lightblueIcon[attrname] = baseIconSettings[attrname];
+                            icon = lightblueIcon;
+                        }
+                        else{
+                            yellowIcon[attrname] = baseIconSettings[attrname];
+                            icon = yellowIcon;
+                        }
                 	}
 		            var marker = new L.marker([stations[i]["Latitude"], stations[i]["Longitude"]], {icon: L.icon(icon), values: stations[i]});
 
