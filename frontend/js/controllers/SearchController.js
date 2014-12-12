@@ -2,7 +2,9 @@ app.controller('SearchController', ['$scope', 'stationService', 'activeStationSe
 	$scope.selectedStation = {};
 
 	$scope.$on('stationServiceReady', function() {
-		$scope.stationJSON = stationService.getJSON();
+		$scope.stationJSON = stationService.getJSON().sort(function(a, b){
+		    return a['Station Name'] < b['Station Name'] ? -1 : a['Station Name'] > b['Station Name'] ? 1 : 0;
+		});;
 	});
 
 	$scope.$on('newActiveStation', function() {
