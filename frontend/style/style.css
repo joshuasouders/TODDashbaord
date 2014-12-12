@@ -401,3 +401,7 @@ table > tbody > tr > td:nth-child(1){
 		display:none;
 	}
 }
+
+.ui-select-choices-row-inner > span{
+	display:none;
+}
