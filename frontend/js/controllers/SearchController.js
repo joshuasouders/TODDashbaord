@@ -8,7 +8,9 @@ app.controller('SearchController', ['$scope', 'stationService', 'activeStationSe
 	});
 
 	$scope.$on('newActiveStation', function() {
-		$scope.selectedStation.selected = activeStationService.getActiveStation();
+		$scope.$apply(function() {
+			$scope.selectedStation.selected = activeStationService.getActiveStation();
+		});
 	});
 
 	$scope.groupByFunction = function(item){

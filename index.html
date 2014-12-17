@@ -34,7 +34,7 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
        <ul class="nav navbar-nav">
-         <li class="active"><a href="#">Home</a></li>
+         <li><a href="#">Home</a></li>
          <li><a href="#about" data-toggle="modal" data-target="#about">About</a></li>
          <li><a href="#contact" data-toggle="modal" data-target="#contact">Contact</a></li>
          <li><a href="#howto" data-toggle="modal" data-target="#howto">How To Use</a></li>
@@ -176,8 +176,8 @@
 
   <div class="right-div">
     <div id="map-container" ng-controller="MapController">
-     <leaflet id="map" defaults="defaults"></leaflet>
-   </div>
+     <div id="map"></div>
+    </div>
   </div>
   </div>
 
@@ -191,7 +191,6 @@
   <script src="bower_components/d3/d3.js"></script>
   <script src="bower_components/nvd3/nv.d3.js"></script>
   <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
-  <script src="bower_components/angular-leaflet/dist/angular-leaflet-directive.min.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 
   <!--Angular Application-->

@@ -1,1 +1,1 @@
-var app = angular.module('TODDashboard', ['leaflet-directive', 'nvd3ChartDirectives', 'ui.select', 'ngSanitize']);
+var app = angular.module('TODDashboard', ['nvd3ChartDirectives', 'ui.select', 'ngSanitize']);
