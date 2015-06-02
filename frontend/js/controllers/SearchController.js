@@ -8,13 +8,15 @@ app.controller('SearchController', ['$scope', 'stationService', 'activeStationSe
 	});
 
 	$scope.$on('newActiveStation', function() {
-		$scope.$apply(function() {
-			$scope.selectedStation.selected = activeStationService.getActiveStation();
-		});
+		if(!$scope.$$phase) {
+			$scope.$apply(function() {
+				$scope.selectedStation.selected = activeStationService.getActiveStation();
+			});
+		}
 	});
 
 	$scope.groupByFunction = function(item){
-		return item["Rail Type 1"];
+		return item["Rail Lines Served"];
 	}
 
 	$scope.$watch('selectedStation.selected', function() {

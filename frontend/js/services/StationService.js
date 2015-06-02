@@ -1,7 +1,7 @@
 app.service('stationService', ["$http", "$rootScope", function($http, $rootScope) {
 	var stationJSON;
 
-	$http.jsonp('http://localhost:8080/rest/getMapData?callback=JSON_CALLBACK').success(function(data, status, headers, config) {
+	$http.get('backend/data.json?callback=JSON_CALLBACK').success(function(data, status, headers, config) {
 		stationJSON = data;
 
 		$rootScope.$broadcast('stationServiceReady');

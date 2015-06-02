@@ -11,7 +11,7 @@ app.service('activeStationService', ["$http", "$rootScope", "stationService", fu
 	    var stationJSON = stationService.getJSON();
 	    
 	    for(var i = 0; i < stationJSON.length; i++){
-	    	if(stationGeoJSON[i].name == obj){
+	    	if(stationJSON[i]["Station Name"] == obj){
 	    		activeStation = stationJSON[i];
 	    		break;
 	    	}

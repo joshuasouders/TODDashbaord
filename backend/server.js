@@ -8,7 +8,7 @@ var app = express();
 app.enable("jsonp callback");
 
 var baseURI = "/rest/";
-var dataURL = "data.json";
+var dataURL = "data_new.json";
 var stationJSON = {};
 
 //CHANGE THIS OUT WHEN THE DATA IS IN SOCRATA, CURRENTLY READS A LOCAL JSON FILE FORMATTED HOW SOCRATA WILL FORMAT IT
