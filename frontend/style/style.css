@@ -321,22 +321,6 @@ table > tbody > tr > td:nth-child(1){
 	}*/
 }
 
-@media (max-width: 1339px) {
-	.station-title{
-		display:none;
-	}
-	.search-nav{
-		display:none;
-	}
-	#search{
-		float:none;
-		margin-left:auto;
-		margin-right:auto;
-		margin-bottom:8px;
-	}
-}
-
-
 
 @media (max-width: 775px) {
 	.long-title{
@@ -518,14 +502,9 @@ table > tbody > tr > td:nth-child(1){
 	height:calc(100% - 125px);
 }
 
-.station-title{
-		display:none;
-	}
-	.search-nav{
-		display:none;
-	}
+
 	#search{
-		float:none;
+		float:right;
 		margin-left:auto;
 		margin-right:auto;
 		margin-bottom:8px;
@@ -548,7 +527,7 @@ table > tbody > tr > td:nth-child(1){
 		text-align:center;
 	}
 
-	@media (max-width: 1300px){
+	@media (max-width: 1356px){
 	.nav-tabs>li{
 		width:100%;
 		max-width:100%;

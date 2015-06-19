@@ -205,25 +205,15 @@
 <div class="side-panel-container">
   <div class="left-div">
     <div class="header overall-header" ng-controller="TitleController">
-     <!--<h3 class="title-bold station-title">{{title}}</h3>-->
-     <div ng-controller="SearchController" class="search-small">
-      <ui-select ng-model="selectedStation.selected" id="search" theme="bootstrap">
-      <ui-select-match placeholder="Select a Station"><b>{{$select.selected['Station Name']}}</b></ui-select-match>
-      <ui-select-choices group-by="groupByFunction" repeat="station in stationJSON | filter: $select.search">
-      <div ng-bind-html="station['Station Name'] | highlight: $select.search">
-        {{station['Station Name']}}
-      </div>
-    </ui-select-choices>
-  </ui-select>
-</div>
-</div>
-
-<div role="tabpanel" class="scrollable-pane" id="score">
-  <h3 class="header transit-score-header">Transit Score
-  <a href="#methodology" data-toggle="modal" data-target="#methodology">
+      <h3 class="title-bold station-title">{{title}}
+      <a href="#methodology" data-toggle="modal" data-target="#methodology">
     <button type="button" class="btn btn-default" aria-label="Left Align">
       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-    </button></a>
+    </button></a></h3>
+    </div>
+
+<div role="tabpanel" class="scrollable-pane" id="score">
+  
   </h3>
   <div style="height:300px;" ng-controller="ScoreChartController" id="score-chart-container">
     <nvd3-discrete-bar-chart

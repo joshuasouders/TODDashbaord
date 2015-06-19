@@ -318,8 +318,6 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                         //console.log(layer.options.values["Latitude"]);
                         //map.panTo(new L.latLng(layer.options.values["Latitude"], layer.options.values["Longitude"]));
 
-                        layer.openPopup();
-
                         if(typeof busRouteLayer != "undefined"){
                             map.removeLayer(busRouteLayer);
                         }
