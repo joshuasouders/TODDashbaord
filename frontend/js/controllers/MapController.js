@@ -184,8 +184,8 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
 
     //these icon settings will be applied to every icon we bring in. no sense in duplicating them.
     var baseIconSettings = {  
-        iconSize:[12, 12],
-        iconAnchor:[6, 0]
+        iconSize:[24, 24],
+        iconAnchor:[12, 12]
     };
 
     var redIcon = {
@@ -209,7 +209,8 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
     }
 
     var yellowIcon = {
-        iconUrl:'frontend/img/icon/yellow_black.png'
+        iconUrl:'frontend/img/icon/yellow_black.png',
+        popupAnchor: [0, -12]
     }
 
     var purpleIcon = {
@@ -221,11 +222,13 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
     }
 
     var darkGrayIcon = {
-        iconUrl:'frontend/img/icon/darkGray.png'
+        iconUrl:'frontend/img/icon/darkGray.png',
+        popupAnchor: [0, -12]
     }
 
     var hoverIcon = {
-        iconUrl:'frontend/img/icon/hover.png'
+        iconUrl:'frontend/img/icon/hover.png',
+        popupAnchor: [0, -12]
     }
 
     var previousRedIcon;
@@ -252,10 +255,12 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
 
             var busLineText = stations[i]["Connecting Bus Routes"] == "" ? "No MTA Bus Lines" : stations[i]["Connecting Bus Routes"];
             if(stations[i]["Transit Score"] != null){
-                marker.bindPopup("<div style='text-align: center'><div style='font-weight:bold'>" + stations[i]["Station Name"] + "</div>Line: " + stations[i]["Rail Lines Served"] + "<div style=\"\">Bus Lines: " + busLineText + "</div></div>");
+                var popup = new L.Popup().setContent("<div style='text-align: center'><div style='font-weight:bold'>" + stations[i]["Station Name"] + "</div>Line: " + stations[i]["Rail Lines Served"] + "<div style=\"\">Bus Lines: " + busLineText + "</div></div>");
+                marker.bindPopup(popup);
             }
             else{
-                marker.bindPopup("<div style='text-align: center'><div style='font-weight:bold'>" + stations[i]["Station Name"] + "</div>No MTA data available, please select another station.</div>");
+                var popup = new L.Popup().setContent("<div style='text-align: center'><div style='font-weight:bold'>" + stations[i]["Station Name"] + "</div>No MTA data available, please select another station.</div>");
+                marker.bindPopup(popup);
             }
             marker.on("click", function(e){
                 //on marker click, send the GeoJSON properties to the activeStationService, which sets the active station to be the thing that was just clicked
