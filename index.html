@@ -129,11 +129,18 @@
           <ul class="no-padding">
           <li class="list-group-item">Number of lines and modes served at each station</li>
           <li class="list-group-item">Number of local bus routes served by each station</li>
-          <li class="list-group-item">Total average weekday ridership for rail service at each station</li>
+          <li class="list-group-item">Total average weekday ridership for rail service at each station**</li>
           <li class="list-group-item">Number of trains per weekday serving the station</li>
           <li class="list-group-item">Number of trains per weekend day serving the station</li>
           </ul>
           *Each of the data points is equally weighted in calculating the summary score for each station.
+          ** Ridership is calculated the following ways:
+          <ul style="list-style-type:disc"><li>Metro Rail ridership is based on Metro gate exit counts.</li>
+          <li>Light Rail ridership is estimated using a statistical sampling process in line with FTA established guidelines, and approved by the FTA.</li>
+          <li>MARC ridership is calculated using two (2) independent methods.</li>
+          <ul style="list-style-type:circle"><li>Monthly Line level ridership is estimated using a statistical sampling process in line with FTA established guidelines, and approved by the FTA.  This method of ridership calculation is used by the MTA for official reporting purposes to State level and Federal level reporting. </li> 
+          <li>Station level ridership is estimated by using person counts completed by the third party vendor.  This method of calculation has not been verified by the FTA for statistical reporting and is used for scheduling purposes only.  However, because of the granularity of detail, this information is useful for TOD applications.  </li>
+          <li>*Please note that the monthly level ridership and the station level ridership are calculated using two (2) independent methods that are not interchangeable and should not be compared for analysis purposes.</li></ul></ul>
   <br><br>
           <h4><img src="frontend/img/score-icons/station.gif" class="category-icon">&nbsp&nbspStation Facility Score</h4>
           The Station Facility Score is calculated in 3 steps. First, each station is given a 1 or 0 on each of the following criteria. A ‘1’ indicates that a station has a certain feature, and a ‘0’ indicates that it is lacking that feature. Second, the sum of each of the values is added up to create a cumulative score for each station. Third, the stations are ranked by this cumulative score and divided into 5 categories, ranging from the top 20% (5) to the lowest 20% (1). Those values, 1-5, are the Station Facility Score for each station.
@@ -183,7 +190,7 @@
           <li class="list-group-item">Number of intersections within half mile buffer (1 mile diameter) of station</li>
           <li class="list-group-item">The Short Trip Opportunity Analysis score*</li>
           </ul>
-          *The Short Trip Opportunity Analysis was a zip-code-level GIS analysis completed by Maryland DOT in preparation of their Bike/Ped Master Plan.
+          *The Short Trip Opportunity Analysis was a zip-code-level GIS analysis completed by Maryland DOT in preparation of their <a href="http://www.mdot.maryland.gov/BikeWalkPlan">Bike/Ped Master Plan</a>.
   <br><br>
           <h4><img src="frontend/img/score-icons/TOD_Brown.gif" class="category-icon">&nbsp&nbspTOD Zoning Score</h4>
           The TOD Zoning Score is calculated in 3 steps. First, each station is given a score for the number of uses permitted by the zoning code within a half-mile buffer (1 mile diameter) around the station. These uses include Residential, Office, Retail, Manufacturing, and Institutional. A point is earned with each permitted use, with a maximum score of 5. Second, 3 points are given if a station is within a Locally Designated TOD area and 3 additional points are awarded is a station lies in a State Designated TOD area. The resulting score is the cumulative score for each station. Finally, the stations are ranked by this cumulative score and divided into 5 categories, ranging from the top 20% (5) to the lowest 20% (1). Those values, 1-5, are the TOD Zoning Score for each station.
@@ -193,6 +200,29 @@
           <li class="list-group-item">Number of permitted uses within ½ mile buffer (1 mile diameter) around station</li>
           <li class="list-group-item">Local status as a designated TOD area</li>
           <li class="list-group-item">State status as a designated TOD area</li>
+          </ul>
+  <br><br>
+          <h4><img src="frontend/img/score-icons/development.gif" class="category-icon">&nbsp&nbspDevelopment Market Score</h4>
+          The Development Market Score is calculated in two different ways:<br>
+          1. Within the Baltimore Metropolitan Council (BMC) region (Anne Arundel County, Baltimore City, Baltimore County, Harford County, and Howard County), the score is calculated in 4 steps. First, the stations are ranked by each of the following data points.  Second, the station’s ranking for each data point is divided into 5 categories, or scores, ranging from the top 20% of values (5) to the lowest 20% of values (1). Third, the scores for each data point at a station are added up to create the cumulative score at each station. Finally, the stations are ranked by this cumulative score and divided into 5 categories, ranging from the top 20% (5) to the lowest 20% (1). Those values, 1-5, are the Transit Score for each station.
+  <br><br>
+          <h5>&nbsp&nbspBuilding Permit Data Points*:</h5>
+          <ul class="no-padding">
+          <li class="list-group-item">Number of permits issued for residential alterations</li>
+          <li class="list-group-item">Number of housing units created by residential alteration permits</li>
+          <li class="list-group-item">Number of permits issued for residential new construction</li>
+          <li class="list-group-item">Number of housing units created by residential new construction permits</li>
+          <li class="list-group-item">Number of permits issued for non-residential alterations</li>
+          <li class="list-group-item">Number of permits issued for non-residential new construction</li>
+          <li class="list-group-item">Number of permits issued for mixed-use new construction</li>
+          <li class="list-group-item">Number of housing units created by mixed-use new construction permits</li>
+          </ul>
+          *Data on permits and housing units comes from the Baltimore Metropolitan Council’s <a href="http://www.arcgis.com/home/item.html?id=b9dae076e7ba4b8bb582d75d2558579a">Building Permit Data System</a>. The data on permits and housing units is from 2000 through 2014. Each of the data points is equally weighted in calculating the summary score for each station.
+          <br><br>
+          2. Outside of the BMC region, the Development Market score is calculated using data from <a href="http://planning.maryland.gov/OurProducts/PropertyMapProducts/MDPropertyViewProducts.shtml">Maryland Property View</a>. The parcel attributes within Maryland Property View that are utilized are the YEARBLT (year in which the structure was built) and SQFTSTRC (square feet of structure).  First, a score is calculated for both the YEARBLT and SQFTSTRC attributes (see below). Second, the YEARBLT score is multiplied by the SQFTSTRC score in order to create a composite score. Third, the sum of the composite scores for all parcels within a ½ mile of the station is calculated in order to create a cumulative composite score for each station. Finally, the range of cumulative composite scores is divided into quintiles. The highest quintile receives a score of “5” and the lowest quintile a score of “1”. Those values, 1-5, are the Market Development Score for each station.
+          <ul class="no-padding">
+          <li class="list-group-item">YEARBLT Score: Dates more recent than 2011 are given a “5”, dates greater than 2008 are given a “4”, dates greater than 2005 are given a “3”, dates greater than 2002 are given a “2”, dates greater than 1999 are given a “1”, and the remaining parcels are given a score of “0”. Note: Some parcels in Maryland Property View have a value of “0” for YEARBLT. All of these parcels receive a “1” for YEARBLT Score.</li>
+          <li class="list-group-item">SQSFTSTRC Score: The values of SQSFTSTRC for each parcel are ranked and divided into 5 categories, ranging from the top 20% (5) to the lowest 20% (1). Those values, 1-5, are the TOD Zoning Score for each station. Note: Some parcels in Maryland Property View have a value of “0” for SQSFTSTRC. All of these parcels receive a “1” for SQSFTSTRC Score.</li>
           </ul>
         </div>
       </div>
