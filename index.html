@@ -234,47 +234,16 @@
   </div>
  <div id="category-icon-container">
     <ul class="nav nav-tabs category-tabs">
-      <li role="presentation" class="active tab-icon first-tab"><a href="#development"  aria-controls="development" data-toggle="tab"><img src="frontend/img/score-icons/Development.gif" class="category-icon"></a></li>
-      <li role="presentation" class="tab-icon"><a href="#transit"  aria-controls="transit" data-toggle="tab"><img src="frontend/img/score-icons/transit.gif" class="category-icon"></a></li>
+      <li role="presentation" class="active tab-icon first-tab"><a href="#transit"  aria-controls="transit" data-toggle="tab"><img src="frontend/img/score-icons/transit.gif" class="category-icon"></a></li>
       <li role="presentation" class="tab-icon"><a href="#station" aria-controls="station"  data-toggle="tab"><img src="frontend/img/score-icons/Station.gif" class="category-icon"></a></li>
       <li role="presentation" class="tab-icon"><a href="#parking" aria-controls="parking"  data-toggle="tab"><img src="frontend/img/score-icons/Parking.gif" class="category-icon"></a></li>
       <li role="presentation" class="tab-icon"><a href="#pedestrian" aria-controls="pedestrian"  data-toggle="tab"><img src="frontend/img/score-icons/Pedestrian.gif" class="category-icon"></a></li>
       <li role="presentation" class="tab-icon"><a href="#bike"  aria-controls="bike"  data-toggle="tab"><img src="frontend/img/score-icons/Bike.gif" class="category-icon"></a></li>
       <li role="presentation" class="tab-icon"><a href="#tod" aria-controls="tod"  data-toggle="tab"><img src="frontend/img/score-icons/TOD_Brown.gif" class="category-icon"></a></li>
+      <li role="presentation" class="tab-icon"><a href="#development"  aria-controls="development" data-toggle="tab"><img src="frontend/img/score-icons/Development.gif" class="category-icon"></a></li>
     </ul>
     <div class="tab-content" ng-controller="DataPanelController">
-      <div role="tabpanel" class="tab-pane active" id="development">
-        <h3>Development Market Data</h3>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>Rail Lines Served</td>
-              <td>{{trainLines}}</td>
-            </tr>
-            <tr>
-              <td>State Designated TOD</td>
-              <td>{{stateDesignatedTOD}}</td>
-            </tr>
-            <tr>
-              <td>Jurisdiction</td>
-              <td>{{jurisdiction}}</td>
-            </tr>
-            <tr>
-              <td>TOD Place Type</td>
-              <td>{{todPlaceType}}</td>
-            </tr>
-            <tr>
-              <td>Area Population (2010)</td>
-              <td>{{localPopulation}}</td>
-            </tr>
-            <tr>
-              <td>Station Type</td>
-              <td>{{stationType}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="transit">
+      <div role="tabpanel" class="tab-pane active" id="transit">
         <h3>Transit Data</h3>
         <table class="table">
           <tbody>
@@ -444,6 +413,37 @@
             <tr>
               <td>Area Master Plans</td>
               <td>{{areaMasterPlans}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="development">
+        <h3>Development Market Data</h3>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Rail Lines Served</td>
+              <td>{{trainLines}}</td>
+            </tr>
+            <tr>
+              <td>State Designated TOD</td>
+              <td>{{stateDesignatedTOD}}</td>
+            </tr>
+            <tr>
+              <td>Jurisdiction</td>
+              <td>{{jurisdiction}}</td>
+            </tr>
+            <tr>
+              <td>TOD Place Type</td>
+              <td>{{todPlaceType}}</td>
+            </tr>
+            <tr>
+              <td>Area Population (2010)</td>
+              <td>{{localPopulation}}</td>
+            </tr>
+            <tr>
+              <td>Station Type</td>
+              <td>{{stationType}}</td>
             </tr>
           </tbody>
         </table>

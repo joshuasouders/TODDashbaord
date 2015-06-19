@@ -1,6 +1,6 @@
 app.controller("ScoreChartController", ["$scope", "$http", "activeStationService", function ($scope, $http, activeStationService) {
 
-    var colorPalleteInOrder = ["rgb(227,91,80)", "rgb(65, 39, 59)", "rgb(124, 37, 41)", "rgb(0, 79, 113)", "rgb(198, 146, 20)", "rgb(74, 119, 41)", "rgb(110, 76, 30)"];
+    var colorPalleteInOrder = ["rgb(65, 39, 59)", "rgb(124, 37, 41)", "rgb(0, 79, 113)", "rgb(198, 146, 20)", "rgb(74, 119, 41)", "rgb(110, 76, 30)", "rgb(227,91,80)"];
 
     window.onresize = function(event) {
         //See the big comment on $scope.updateChartSize()
@@ -19,13 +19,14 @@ app.controller("ScoreChartController", ["$scope", "$http", "activeStationService
             {
                 key: activeStationService.getActiveStation()["Station Name"],
                 values: [
-                    ["Development", activeStationService.getActiveStation()["Development Market"]],
                     ["Transit", activeStationService.getActiveStation()["Transit Score"]],
                     ["Facilities", activeStationService.getActiveStation()["Station Facility Score"]],
                     ["Parking", activeStationService.getActiveStation()["Parking Score"]],
                     ["Pedestrian", activeStationService.getActiveStation()["Ped Access Score"]],
                     ["Bike Access", activeStationService.getActiveStation()["Bike Access Score"]],
-                    ["TOD Zoning", activeStationService.getActiveStation()["TOD Zoning Score"]]
+                    ["TOD Zoning", activeStationService.getActiveStation()["TOD Zoning Score"]],
+                    ["Development", activeStationService.getActiveStation()["Development Market"]]
+
                 ]
             }
         ];
@@ -33,13 +34,13 @@ app.controller("ScoreChartController", ["$scope", "$http", "activeStationService
     }
 
     var iconRelation = {
-        "Development": "Development.gif",
         "Transit": "Transit.gif",
         "Facilities": "Station.gif",
         "Parking": "Parking.gif",
         "Pedestrian": "Pedestrian.gif",
         "Bike Access": "Bike.gif",
-        "TOD Zoning": "TOD_brown.gif"
+        "TOD Zoning": "TOD_brown.gif",
+        "Development": "Development.gif",
     };
 
     //this sets the tick format of the x axis so that it keeps "1" from being "1.0"
