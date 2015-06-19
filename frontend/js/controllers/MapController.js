@@ -276,8 +276,9 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
 
                     e.target.setIcon(L.icon(icon));
 
-                    e.target.openPopup();
+                    
                 }
+                e.target.openPopup();
             });
 
             marker.on('mouseout', function(e){
@@ -292,9 +293,10 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
 
                         e.target.setIcon(L.icon(icon));
 
-                        e.target.closePopup();
+                       
                     }
                 }
+                 e.target.closePopup();
             });
 
             marker.addTo(map);
