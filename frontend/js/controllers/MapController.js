@@ -262,10 +262,7 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                 if(e.target.options.values["Transit Score"] != null){
                     activeStationService.setActiveStationByJSON(e.target.options.values);
                 }
-                else{
-                    console.log(e);
-                    e.target.openPopup();
-                }
+                e.target.closePopup();
             });
 
             marker.on('mouseover', function(e){
@@ -278,6 +275,8 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                     }
 
                     e.target.setIcon(L.icon(icon));
+
+                    e.target.openPopup();
                 }
             });
 
@@ -292,6 +291,8 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                         }
 
                         e.target.setIcon(L.icon(icon));
+
+                        e.target.closePopup();
                     }
                 }
             });
