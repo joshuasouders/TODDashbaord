@@ -3,7 +3,7 @@ app.controller('SearchController', ['$scope', 'stationService', 'activeStationSe
 
 	$scope.$on('stationServiceReady', function() {
 		$scope.stationJSON = stationService.getJSON().sort(function(a, b){
-		    return a['Station Name'] < b['Station Name'] ? -1 : a['Station Name'] > b['Station Name'] ? 1 : 0;
+		    return a['station_name'] < b['station_name'] ? -1 : a['station_name'] > b['station_name'] ? 1 : 0;
 		});;
 	});
 
@@ -16,7 +16,7 @@ app.controller('SearchController', ['$scope', 'stationService', 'activeStationSe
 	});
 
 	$scope.groupByFunction = function(item){
-		return item["Rail Lines Served"];
+		return item["rail_lines_served"];
 	}
 
 	$scope.$watch('selectedStation.selected', function() {

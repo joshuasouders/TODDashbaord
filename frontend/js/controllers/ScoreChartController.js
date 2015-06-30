@@ -19,13 +19,13 @@ app.controller("ScoreChartController", ["$scope", "$http", "activeStationService
             {
                 key: activeStationService.getActiveStation()["Station Name"],
                 values: [
-                    ["Transit", activeStationService.getActiveStation()["Transit Score"]],
-                    ["Facilities", activeStationService.getActiveStation()["Station Facility Score"]],
-                    ["Parking", activeStationService.getActiveStation()["Parking Score"]],
-                    ["Pedestrian", activeStationService.getActiveStation()["Ped Access Score"]],
-                    ["Bike Access", activeStationService.getActiveStation()["Bike Access Score"]],
-                    ["TOD Zoning", activeStationService.getActiveStation()["TOD Zoning Score"]],
-                    ["Development", activeStationService.getActiveStation()["Development Market"]]
+                    ["Transit", activeStationService.getActiveStation()["transit_score"]],
+                    ["Facilities", activeStationService.getActiveStation()["station_facility_score"]],
+                    ["Parking", activeStationService.getActiveStation()["parking_score"]],
+                    ["Pedestrian", activeStationService.getActiveStation()["ped_access_score"]],
+                    ["Bike Access", activeStationService.getActiveStation()["bike_access_score"]],
+                    ["TOD Zoning", activeStationService.getActiveStation()["tod_zoning_score"]],
+                    ["Development", activeStationService.getActiveStation()["development_market"]]
 
                 ]
             }

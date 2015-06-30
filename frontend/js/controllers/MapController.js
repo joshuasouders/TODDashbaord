@@ -115,7 +115,6 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
         };
 
         L.geoJson(data, {style: parcelStyle, onEachFeature: function (feature, layer) {
-            console.log(feature);
             layer.bindPopup("<div style=\"font-weight:bold; text-align:center;\">Potential Development in the " + feature.properties.Region + " Region</div><br>Development Area: " + (Math.round(feature.properties.TOD_acres * 100) / 100) + " acres<br><br>For more details, contact <a href=\"http://business.maryland.gov/move/find-a-location\">Maryland Department of Business and Economic Development</a>");
         }}).addTo(map);
     });
@@ -242,7 +241,7 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
             var icon;
 
             for (var attrname in baseIconSettings){
-                if (stations[i]["Transit Score"] == null){
+                if (stations[i]["transit_score"] == null){
                     darkGrayIcon[attrname] = baseIconSettings[attrname];
                     icon = darkGrayIcon;
                 }
@@ -251,27 +250,27 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                     icon = yellowIcon;
                 }
             }
-            var marker = new L.marker([stations[i]["Latitude"], stations[i]["Longitude"]], {icon: L.icon(icon), values: stations[i]});
+            var marker = new L.marker([stations[i]["location"]["latitude"], stations[i]["location"]["longitude"]], {icon: L.icon(icon), values: stations[i]});
 
-            var busLineText = stations[i]["Connecting Bus Routes"] == "" ? "No MTA Bus Lines" : stations[i]["Connecting Bus Routes"];
-            if(stations[i]["Transit Score"] != null){
-                var popup = new L.Popup().setContent("<div style='text-align: center'><div style='font-weight:bold'>" + stations[i]["Station Name"] + "</div>Line: " + stations[i]["Rail Lines Served"] + "<div style=\"\">Bus Lines: " + busLineText + "</div></div>");
+            var busLineText = typeof stations[i]["connecting_bus_routes_text"] == "undefined" ? "No MTA Bus Lines" : stations[i]["connecting_bus_routes_text"];
+            if(stations[i]["transit_score"] != null){
+                var popup = new L.Popup().setContent("<div style='text-align: center'><div style='font-weight:bold'>" + stations[i]["station_name"] + "</div>Line: " + stations[i]["rail_lines_served"] + "<div style=\"\">Bus Lines: " + busLineText + "</div></div>");
                 marker.bindPopup(popup);
             }
             else{
-                var popup = new L.Popup().setContent("<div style='text-align: center'><div style='font-weight:bold'>" + stations[i]["Station Name"] + "</div>No MTA data available, please select another station.</div>");
+                var popup = new L.Popup().setContent("<div style='text-align: center'><div style='font-weight:bold'>" + stations[i]["station_name"] + "</div>No MTA data available, please select another station.</div>");
                 marker.bindPopup(popup);
             }
             marker.on("click", function(e){
                 //on marker click, send the GeoJSON properties to the activeStationService, which sets the active station to be the thing that was just clicked
-                if(e.target.options.values["Transit Score"] != null){
+                if(e.target.options.values["transit_score"] != null){
                     activeStationService.setActiveStationByJSON(e.target.options.values);
                 }
                 e.target.closePopup();
             });
 
             marker.on('mouseover', function(e){
-                if(e.target.options.values["Transit Score"] != null){
+                if(e.target.options.values["transit_score"] != null){
                     var icon;
 
                     for (var attrname in baseIconSettings){
@@ -287,7 +286,7 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
             });
 
             marker.on('mouseout', function(e){
-                if(e.target.options.values["Transit Score"] != null){
+                if(e.target.options.values["transit_score"] != null){
                     if(previousRedIcon != e.target){
                         var icon;
 
@@ -315,13 +314,15 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
 
     //called every time a new active station is set, regardless of the source
     $scope.$on('newActiveStation', function() {
-        var activeStationName = activeStationService.getActiveStation()["Station Name"];
+        var activeStationName = activeStationService.getActiveStation()["station_name"];
 
         //find the layer that contains the marker for the active station
         map.eachLayer(function(layer){
             if(typeof(layer.options) != "undefined"){
                 if(typeof(layer.options.values) != "undefined"){
-                    if(layer.options.values["Station Name"] == activeStationName){
+                    //console.log(layer.options.values["station_name"]);
+                    //console.log(activeStationName);
+                    if(layer.options.values["station_name"] == activeStationName){
                         //console.log(layer.options.values["Latitude"]);
                         //map.panTo(new L.latLng(layer.options.values["Latitude"], layer.options.values["Longitude"]));
 
@@ -329,44 +330,12 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                             map.removeLayer(busRouteLayer);
                         }
 
-                        if(typeof busRoutes != "undefined"){
-                            var busRouteArr = activeStationService.getActiveStation()["Connecting Bus Routes"].split(", ");
-                            var busRouteArrIndex = 0;
-
-                            var layerGroupArr = [];
-
-                            for(var i = 0; i < busRoutes.features.length; i++){
-                                if(typeof busRouteArr[busRouteArrIndex] != "undefined"){
-                                    var busRouteTemp;
-                                    if(busRouteArr[busRouteArrIndex].toString().length == 1){
-                                        busRouteTemp = "00" + busRouteArr[busRouteArrIndex].toString();
-                                    }
-                                    else if(busRouteArr[busRouteArrIndex].toString().length == 2){
-                                        busRouteTemp = "0" + busRouteArr[busRouteArrIndex].toString();
-                                    }
-                                    else{
-                                        busRouteTemp = busRouteArr[busRouteArrIndex].toString();
-                                    }
-                                    if(busRouteTemp == busRoutes.features[i].properties["Route_Number"]){
-                                        layerGroupArr.push(L.geoJson(busRoutes.features[i], {dashArray: "10, 5", opacity: 1, weight:2, color:"#1351a3"}).bindPopup('<div>Bus Line: ' + busRouteTemp + '</div>'));
-                                        if(busRouteArrIndex < busRouteArr.length){
-                                            busRouteArrIndex++;
-                                        }
-                                        else{
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            busRouteLayer = L.layerGroup(layerGroupArr).addTo(map);
-
-                        }
-                        else{
-                            $http.get('http://data.imap.maryland.gov/datasets/44e663e04929408bb320ebe1ac614f71_11.geojson').success(function(data, status, headers, config) {
-                                busRoutes = data;
-
-                                var busRouteArr = activeStationService.getActiveStation()["Connecting Bus Routes"].split(", ");
+                        if(typeof activeStationService.getActiveStation()["connecting_bus_routes_text"] != "undefined"){
+                            if(typeof busRoutes != "undefined"){
+                                var busRouteArr = activeStationService.getActiveStation()["connecting_bus_routes_text"].split(", ");
                                 var busRouteArrIndex = 0;
+
+                                console.log(busRouteArr[0]);
 
                                 var layerGroupArr = [];
 
@@ -382,10 +351,10 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                                         else{
                                             busRouteTemp = busRouteArr[busRouteArrIndex].toString();
                                         }
+                                        console.log(busRouteTemp);
+                                            console.log(busRoutes);
                                         if(busRouteTemp == busRoutes.features[i].properties["Route_Number"]){
-                                            var line = L.geoJson(busRoutes.features[i], {dashArray: "10, 5", opacity: 1, weight:2, color:"#1351a3"});
-                                            line.bindPopup('<div>Bus Line: ' + busRouteTemp + '</div>');
-                                            layerGroupArr.push(line);
+                                            layerGroupArr.push(L.geoJson(busRoutes.features[i], {dashArray: "10, 5", opacity: 1, weight:2, color:"#1351a3"}).bindPopup('<div>Bus Line: ' + busRouteTemp + '</div>'));
                                             if(busRouteArrIndex < busRouteArr.length){
                                                 busRouteArrIndex++;
                                             }
@@ -396,7 +365,48 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                                     }
                                 }
                                 busRouteLayer = L.layerGroup(layerGroupArr).addTo(map);
-                            });
+
+                            }
+                            else{
+                                $http.get('http://data.imap.maryland.gov/datasets/44e663e04929408bb320ebe1ac614f71_11.geojson').success(function(data, status, headers, config) {
+                                    busRoutes = data;
+
+                                    var busRouteArr = activeStationService.getActiveStation()["connecting_bus_routes_text"].split(", ");
+                                    var busRouteArrIndex = 0;
+                                    console.log(busRouteArr[0]);
+
+                                    var layerGroupArr = [];
+
+                                    for(var i = 0; i < busRoutes.features.length; i++){
+                                        if(typeof busRouteArr[busRouteArrIndex] != "undefined"){
+                                            var busRouteTemp;
+                                            if(busRouteArr[busRouteArrIndex].toString().length == 1){
+                                                busRouteTemp = "00" + busRouteArr[busRouteArrIndex].toString();
+                                            }
+                                            else if(busRouteArr[busRouteArrIndex].toString().length == 2){
+                                                busRouteTemp = "0" + busRouteArr[busRouteArrIndex].toString();
+                                            }
+                                            else{
+                                                busRouteTemp = busRouteArr[busRouteArrIndex].toString();
+                                            }
+                                            console.log(busRouteTemp);
+                                            console.log(busRoutes);
+                                            if(busRouteTemp == busRoutes.features[i].properties["Route_Number"]){
+                                                var line = L.geoJson(busRoutes.features[i], {dashArray: "10, 5", opacity: 1, weight:2, color:"#1351a3"});
+                                                line.bindPopup('<div>Bus Line: ' + busRouteTemp + '</div>');
+                                                layerGroupArr.push(line);
+                                                if(busRouteArrIndex < busRouteArr.length){
+                                                    busRouteArrIndex++;
+                                                }
+                                                else{
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    busRouteLayer = L.layerGroup(layerGroupArr).addTo(map);
+                                });
+                            }
                         }
 
                         var icon;

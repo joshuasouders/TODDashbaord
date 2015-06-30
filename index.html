@@ -46,10 +46,10 @@
      </ul>
      <div ng-controller="SearchController" class="search-nav">
       <ui-select ng-model="selectedStation.selected" id="search" style="width: 300px;">
-      <ui-select-match placeholder="Select a Station">{{$select.selected['Station Name']}}</ui-select-match>
+      <ui-select-match placeholder="Select a Station">{{$select.selected['station_name']}}</ui-select-match>
       <ui-select-choices group-by="groupByFunction" repeat="station in stationJSON | filter: $select.search">
-      <div ng-bind-html="station['Station Name'] | highlight: $select.search">
-        {{station['Station Name']}}
+      <div ng-bind-html="station['station_name'] | highlight: $select.search">
+        {{station['station_name']}}
       </div>
       `   </ui-select-choices>
     </ui-select>
@@ -341,7 +341,7 @@
           <tbody>
             <tr>
               <td>Parking Spots Regular</td>
-              <td>{{publicRestrooms}}</td>
+              <td>{{parkingSpaces}}</td>
             </tr>
             <tr>
               <td>Parking Fee</td>
@@ -349,7 +349,7 @@
             </tr>
             <tr>
               <td>ADA Parking Spots</td>
-              <td>{{parkingFee}}</td>
+              <td>{{parkingSpotsADA}}</td>
             </tr>
             <tr>
               <td>EVC Charging Stations</td>
