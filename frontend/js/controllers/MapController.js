@@ -320,11 +320,7 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
         map.eachLayer(function(layer){
             if(typeof(layer.options) != "undefined"){
                 if(typeof(layer.options.values) != "undefined"){
-                    //console.log(layer.options.values["station_name"]);
-                    //console.log(activeStationName);
                     if(layer.options.values["station_name"] == activeStationName){
-                        //console.log(layer.options.values["Latitude"]);
-                        //map.panTo(new L.latLng(layer.options.values["Latitude"], layer.options.values["Longitude"]));
 
                         if(typeof busRouteLayer != "undefined"){
                             map.removeLayer(busRouteLayer);
@@ -334,8 +330,6 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                             if(typeof busRoutes != "undefined"){
                                 var busRouteArr = activeStationService.getActiveStation()["connecting_bus_routes_text"].split(", ");
                                 var busRouteArrIndex = 0;
-
-                                console.log(busRouteArr[0]);
 
                                 var layerGroupArr = [];
 
@@ -351,8 +345,6 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                                         else{
                                             busRouteTemp = busRouteArr[busRouteArrIndex].toString();
                                         }
-                                        console.log(busRouteTemp);
-                                            console.log(busRoutes);
                                         if(busRouteTemp == busRoutes.features[i].properties["Route_Number"]){
                                             layerGroupArr.push(L.geoJson(busRoutes.features[i], {dashArray: "10, 5", opacity: 1, weight:2, color:"#1351a3"}).bindPopup('<div>Bus Line: ' + busRouteTemp + '</div>'));
                                             if(busRouteArrIndex < busRouteArr.length){
@@ -373,7 +365,6 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
 
                                     var busRouteArr = activeStationService.getActiveStation()["connecting_bus_routes_text"].split(", ");
                                     var busRouteArrIndex = 0;
-                                    console.log(busRouteArr[0]);
 
                                     var layerGroupArr = [];
 
@@ -389,8 +380,6 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
                                             else{
                                                 busRouteTemp = busRouteArr[busRouteArrIndex].toString();
                                             }
-                                            console.log(busRouteTemp);
-                                            console.log(busRoutes);
                                             if(busRouteTemp == busRoutes.features[i].properties["Route_Number"]){
                                                 var line = L.geoJson(busRoutes.features[i], {dashArray: "10, 5", opacity: 1, weight:2, color:"#1351a3"});
                                                 line.bindPopup('<div>Bus Line: ' + busRouteTemp + '</div>');
