@@ -235,7 +235,7 @@
 <div class="side-panel-container">
   <div class="left-div">
     <div class="header overall-header" ng-controller="TitleController">
-      <h3 class="title-bold station-title">{{title}}
+      <h3 class="title-bold station-title" ng-bind="title">
       <a href="#methodology" data-toggle="modal" data-target="#methodology">
     <button type="button" class="btn btn-default" aria-label="Left Align">
       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
@@ -279,19 +279,19 @@
           <tbody>
             <tr>
               <td>Total Rail Lines</td>
-              <td>{{totalRailLines}}</td>
+              <td ng-bind="totalRailLines"></td>
             </tr>
             <tr>
               <td>Modes Served</td>
-              <td>{{modesServed}}</td>
+              <td ng-bind="modesServed"></td>
             </tr>
             <tr>
               <td>Transit Connections</td>
-              <td>{{transitConnections}}</td>
+              <td ng-bind="transitConnections"></td>
             </tr>
             <tr>
               <td>Bus Lines</td>
-              <td>{{busLines}}</td>
+              <td ng-bind="busLines"></td>
             </tr>
           </tbody>
         </table>
