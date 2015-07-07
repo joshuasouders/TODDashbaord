@@ -39,10 +39,10 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
      <ul class="nav navbar-nav">
-       <li><a href="#">Home</a></li>
        <li><a href="#about" data-toggle="modal" data-target="#about">About</a></li>
        <li><a href="#contact" data-toggle="modal" data-target="#contact">Contact</a></li>
        <li><a href="#howto" data-toggle="modal" data-target="#howto">How To Use</a></li>
+        <li><a href="#methodology" data-toggle="modal" data-target="#methodology">Methodology</a></li>
      </ul>
      <div ng-controller="SearchController" class="search-nav">
       <ui-select ng-model="selectedStation.selected" id="search" style="width: 300px;">
@@ -235,11 +235,7 @@
 <div class="side-panel-container">
   <div class="left-div">
     <div class="header overall-header" ng-controller="TitleController">
-      <h3 class="title-bold station-title" ng-bind="title">
-      <a href="#methodology" data-toggle="modal" data-target="#methodology">
-    <button type="button" class="btn btn-default" aria-label="Left Align">
-      <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-    </button></a></h3>
+      <h3 class="title-bold station-title" ng-bind="title"></h3>
     </div>
 
 <div role="tabpanel" class="scrollable-pane" id="score">
