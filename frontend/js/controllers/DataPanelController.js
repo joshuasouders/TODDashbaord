@@ -2,28 +2,6 @@ app.controller("DataPanelController", ["$scope", "$http", "activeStationService"
     $scope.$on('newActiveStation', function() {
 
         /*
-        General
-        */
-
-        $scope.trainLines = activeStationService.getActiveStation()["rail_lines_served"];
-        $scope.trainLines = (((($scope.trainLines == "") || ($scope.trainLines == null)) && ($scope.trainLines != 0)) ? "Data Not Avaialable" : $scope.trainLines);
-
-        $scope.stateDesignatedTOD = activeStationService.getActiveStation()["state_designated_tod"];
-        $scope.stateDesignatedTOD = (((($scope.stateDesignatedTOD == "") || ($scope.stateDesignatedTOD == null)) && ($scope.stateDesignatedTOD != 0)) ? "Data Not Avaialable" : $scope.stateDesignatedTOD);
-
-        $scope.jurisdiction = activeStationService.getActiveStation()["jurisdiction"];
-        $scope.jurisdiction = (((($scope.jurisdiction == "") || ($scope.jurisdiction == null)) && ($scope.jurisdiction != 0)) ? "Data Not Avaialable" : $scope.jurisdiction);
-
-        $scope.todPlaceType = activeStationService.getActiveStation()["tod_place_type"];
-        $scope.todPlaceType = (((($scope.todPlaceType == "") || ($scope.todPlaceType == null)) && ($scope.todPlaceType != 0)) ? "Data Not Avaialable" : $scope.todPlaceType);
-
-        $scope.localPopulation = activeStationService.getActiveStation()["area_population_2010"];
-        $scope.localPopulation = (((($scope.localPopulation == "") || ($scope.localPopulation == null)) && ($scope.localPopulation != 0)) ? "Data Not Avaialable" : $scope.localPopulation + " People");
-
-        $scope.stationType = activeStationService.getActiveStation()["station_type"];
-        $scope.stationType = (((($scope.stationType == "") || ($scope.stationType == null)) && ($scope.stationType != 0)) ? "Data Not Avaialable" : $scope.stationType);
-
-        /*
         Transit Information
         */
 
@@ -38,6 +16,10 @@ app.controller("DataPanelController", ["$scope", "$http", "activeStationService"
 
         $scope.busLines = activeStationService.getActiveStation()["connecting_bus_routes"];
         $scope.busLines = (((($scope.busLines == "") || ($scope.busLines == null)) && ($scope.busLines != 0)) ? "Data Not Avaialable" : $scope.busLines);
+
+        $scope.trainLines = activeStationService.getActiveStation()["rail_lines_served"];
+        $scope.trainLines = (((($scope.trainLines == "") || ($scope.trainLines == null)) && ($scope.trainLines != 0)) ? "Data Not Avaialable" : $scope.trainLines);
+
 
         /*
         Station Facilities
@@ -147,20 +129,48 @@ app.controller("DataPanelController", ["$scope", "$http", "activeStationService"
         $scope.areaMasterPlans = activeStationService.getActiveStation()["area_master_plans"];
         $scope.areaMasterPlans = (((($scope.areaMasterPlans == "") || ($scope.areaMasterPlans == null)) && ($scope.areaMasterPlans != 0)) ? "Data Not Avaialable" : $scope.areaMasterPlans);
 
+        $scope.stateDesignatedTOD = activeStationService.getActiveStation()["state_designated_tod"];
+        $scope.stateDesignatedTOD = (((($scope.stateDesignatedTOD == "") || ($scope.stateDesignatedTOD == null)) && ($scope.stateDesignatedTOD != 0)) ? "Data Not Avaialable" : $scope.stateDesignatedTOD);
 
-        /*$scope.trainLines = "";
-        for(var i = 1; i < 5; i++){
-            if(activeStationService.getActiveStation()["Rail Type " + i] != ""){
-                if($scope.trainLines.length != 0){
-                    $scope.trainLines += ", ";
-                }
-                $scope.trainLines += activeStationService.getActiveStation()["Rail Type " + i];
-            }
-        }
-        $scope.trainLines = ((($scope.trainLines == "") || ($scope.trainLines == null)) ? "Data Not Avaialable" : $scope.trainLines);*/
+        $scope.jurisdiction = activeStationService.getActiveStation()["jurisdiction"];
+        $scope.jurisdiction = (((($scope.jurisdiction == "") || ($scope.jurisdiction == null)) && ($scope.jurisdiction != 0)) ? "Data Not Avaialable" : $scope.jurisdiction);
 
+        $scope.todPlaceType = activeStationService.getActiveStation()["tod_place_type"];
+        $scope.todPlaceType = (((($scope.todPlaceType == "") || ($scope.todPlaceType == null)) && ($scope.todPlaceType != 0)) ? "Data Not Avaialable" : $scope.todPlaceType);
 
+        /*
+        Development Market
+        */
 
+        $scope.residentialAlterationsUnits = activeStationService.getActiveStation()["residential_alterations_units"];
+        $scope.residentialAlterationsUnits = (((($scope.residentialAlterationsUnits == "") || ($scope.residentialAlterationsUnits == null)) && ($scope.residentialAlterationsUnits != 0)) ? "Data Not Avaialable" : $scope.residentialAlterationsUnits);
+
+        $scope.residentialAlterationsPermits = activeStationService.getActiveStation()["residentail_alterations_permits"];
+        $scope.residentialAlterationsPermits = (((($scope.residentialAlterationsPermits == "") || ($scope.residentialAlterationsPermits == null)) && ($scope.residentialAlterationsPermits != 0)) ? "Data Not Avaialable" : $scope.residentialAlterationsPermits);
+
+        $scope.residentialNewConstructionPermits = activeStationService.getActiveStation()["residential_new_construction_permits"];
+        $scope.residentialNewConstructionPermits = (((($scope.residentialNewConstructionPermits == "") || ($scope.residentialNewConstructionPermits == null)) && ($scope.residentialNewConstructionPermits != 0)) ? "Data Not Avaialable" : $scope.residentialNewConstructionPermits);
+
+        $scope.residentialNewConstructionUnits = activeStationService.getActiveStation()["residential_new_construction_units"];
+        $scope.residentialNewConstructionUnits = (((($scope.residentialNewConstructionUnits == "") || ($scope.residentialNewConstructionUnits == null)) && ($scope.residentialNewConstructionUnits != 0)) ? "Data Not Avaialable" : $scope.residentialNewConstructionUnits);
+
+        $scope.nonResidentialAlterationsPermits = activeStationService.getActiveStation()["non_residential_alterations_permits"];
+        $scope.nonResidentialAlterationsPermits = (((($scope.nonResidentialAlterationsPermits == "") || ($scope.nonResidentialAlterationsPermits == null)) && ($scope.nonResidentialAlterationsPermits != 0)) ? "Data Not Avaialable" : $scope.nonResidentialAlterationsPermits);
+
+        $scope.nonResidentialNewConstructionPermits = activeStationService.getActiveStation()["non_residentail_new_contruction_permits"];
+        $scope.nonResidentialNewConstructionPermits = (((($scope.nonResidentialNewConstructionPermits == "") || ($scope.nonResidentialNewConstructionPermits == null)) && ($scope.nonResidentialNewConstructionPermits != 0)) ? "Data Not Avaialable" : $scope.nonResidentialNewConstructionPermits);
+
+        $scope.mixedUseNewConstructionPermits = activeStationService.getActiveStation()["mixed_use_new_construction_permits"];
+        $scope.mixedUseNewConstructionPermits = (((($scope.mixedUseNewConstructionPermits == "") || ($scope.mixedUseNewConstructionPermits == null)) && ($scope.mixedUseNewConstructionPermits != 0)) ? "Data Not Avaialable" : $scope.mixedUseNewConstructionPermits);
+
+        $scope.mixedUseNewConstructionUnits = activeStationService.getActiveStation()["mixed_use_new_construction_units"];
+        $scope.mixedUseNewConstructionUnits = (((($scope.mixedUseNewConstructionUnits == "") || ($scope.mixedUseNewConstructionUnits == null)) && ($scope.mixedUseNewConstructionUnits != 0)) ? "Data Not Avaialable" : $scope.mixedUseNewConstructionUnits);
+
+        $scope.countOfMDPropertyViewParcels = activeStationService.getActiveStation()["count_of_md_property_view_parcels"];
+        $scope.countOfMDPropertyViewParcels = (((($scope.countOfMDPropertyViewParcels == "") || ($scope.countOfMDPropertyViewParcels == null)) && ($scope.countOfMDPropertyViewParcels != 0)) ? "Data Not Avaialable" : $scope.countOfMDPropertyViewParcels);
+
+        $scope.cumulativeCompositeScore = activeStationService.getActiveStation()["cumulative_composite_score_yearblt_score_x_sqftstrc_score"];
+        $scope.cumulativeCompositeScore = (((($scope.cumulativeCompositeScore == "") || ($scope.cumulativeCompositeScore == null)) && ($scope.cumulativeCompositeScore != 0)) ? "Data Not Avaialable" : $scope.cumulativeCompositeScore);
 
     });
 }]);

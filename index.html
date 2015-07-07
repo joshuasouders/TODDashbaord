@@ -289,6 +289,10 @@
               <td>Bus Lines</td>
               <td ng-bind="busLines"></td>
             </tr>
+            <tr>
+              <td>Rail Lines Served</td>
+              <td ng-bind="trainLines"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -440,17 +444,6 @@
               <td>Area Master Plans</td>
               <td>{{areaMasterPlans}}</td>
             </tr>
-          </tbody>
-        </table>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="development">
-        <h3>Development Market Data</h3>
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>Rail Lines Served</td>
-              <td>{{trainLines}}</td>
-            </tr>
             <tr>
               <td>State Designated TOD</td>
               <td>{{stateDesignatedTOD}}</td>
@@ -463,13 +456,52 @@
               <td>TOD Place Type</td>
               <td>{{todPlaceType}}</td>
             </tr>
+          </tbody>
+        </table>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="development">
+        <h3>Development Market Data</h3>
+        <table class="table">
+          <tbody>
             <tr>
-              <td>Area Population (2010)</td>
-              <td>{{localPopulation}}</td>
+              <td>Residential Alterations (Units)</td>
+              <td>{{residentialAlterationsUnits}}</td>
             </tr>
             <tr>
-              <td>Station Type</td>
-              <td>{{stationType}}</td>
+              <td>Residential Alterations (Permits)</td>
+              <td>{{residentialAlterationsPermits}}</td>
+            </tr>
+            <tr>
+              <td>Residential New Construction (Permits)</td>
+              <td>{{residentialNewConstructionPermits}}</td>
+            </tr>
+            <tr>
+              <td>Residential New Construction (Units)</td>
+              <td>{{residentialNewConstructionUnits}}</td>
+            </tr>
+            <tr>
+              <td>Non Residential Alterations (Permits)</td>
+              <td>{{nonResidentialAlterationsPermits}}</td>
+            </tr>
+            <tr>
+              <td>Non Residential New Construction (Permits)</td>
+              <td>{{nonResidentialNewConstructionPermits}}</td>
+            </tr>
+            <tr>
+              <td>Mixed Use New Construction (Permits)</td>
+              <td>{{mixedUseNewConstructionPermits}}</td>
+            </tr>
+            <tr>
+              <td>Mixed Use New Construction (Units)</td>
+              <td>{{mixedUseNewConstructionUnits}}</td>
+            </tr>
+            <tr>
+              <td>Count of MD Property View Parcels</td>
+              <td>{{countOfMDPropertyViewParcels}}</td>
+            </tr>
+            <tr>
+              <td>Cumulative Composite Score (YEARBLT score x SQFTSTRC score)</td>
+              <td>{{cumulativeCompositeScore}}</td>
             </tr>
           </tbody>
         </table>
