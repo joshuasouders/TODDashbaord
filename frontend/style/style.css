@@ -21,6 +21,10 @@
 	height:100%;
 }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none;
+}
+
 .side-panel-container{
 	width:100%;
 	height:100%;

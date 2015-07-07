@@ -20,6 +20,66 @@ app.controller("DataPanelController", ["$scope", "$http", "activeStationService"
         $scope.trainLines = activeStationService.getActiveStation()["rail_lines_served"];
         $scope.trainLines = (((($scope.trainLines == "") || ($scope.trainLines == null)) && ($scope.trainLines != 0)) ? "Data Not Avaialable" : $scope.trainLines);
 
+        $scope.weekdayRidershipMARCPenn = activeStationService.getActiveStation()["weekday_ridership_marc_penn"];
+        $scope.weekdayRidershipMARCPenn = (((($scope.weekdayRidershipMARCPenn == "") || ($scope.weekdayRidershipMARCPenn == null)) && ($scope.weekdayRidershipMARCPenn != 0)) ? null : $scope.weekdayRidershipMARCPenn);
+
+        $scope.weekdayRidershipMARCCamden = activeStationService.getActiveStation()["weekday_ridership_marc_camden"];
+        $scope.weekdayRidershipMARCCamden = (((($scope.weekdayRidershipMARCCamden == "") || ($scope.weekdayRidershipMARCCamden == null)) && ($scope.weekdayRidershipMARCCamden != 0)) ? null : $scope.weekdayRidershipMARCCamden);
+
+        $scope.weekdayRidershipMARCBrunswick = activeStationService.getActiveStation()["weekday_ridership_marc_brunswick"];
+        $scope.weekdayRidershipMARCBrunswick = (((($scope.weekdayRidershipMARCBrunswick == "") || ($scope.weekdayRidershipMARCBrunswick == null)) && ($scope.weekdayRidershipMARCBrunswick != 0)) ? null : $scope.weekdayRidershipMARCBrunswick);
+
+        $scope.weekdayRidershipMetro = activeStationService.getActiveStation()["weekday_ridership_metro"];
+        $scope.weekdayRidershipMetro = (((($scope.weekdayRidershipMetro == "") || ($scope.weekdayRidershipMetro == null)) && ($scope.weekdayRidershipMetro != 0)) ? null : $scope.weekdayRidershipMetro);
+
+        $scope.weekdayRidershipLightRail = activeStationService.getActiveStation()["weekday_ridership_light_rail"];
+        $scope.weekdayRidershipLightRail = (((($scope.weekdayRidershipLightRail == "") || ($scope.weekdayRidershipLightRail == null)) && ($scope.weekdayRidershipLightRail != 0)) ? null : $scope.weekdayRidershipLightRail);
+
+        $scope.weekendRidershipMARCPenn = activeStationService.getActiveStation()["weekend_ridership_marc_penn"];
+        $scope.weekendRidershipMARCPenn = (((($scope.weekendRidershipMARCPenn == "") || ($scope.weekendRidershipMARCPenn == null)) && ($scope.weekendRidershipMARCPenn != 0)) ? null : $scope.weekendRidershipMARCPenn);
+
+        $scope.weekendRidershipMARCCamden = activeStationService.getActiveStation()["weekend_ridership_marc_camden"];
+        $scope.weekendRidershipMARCCamden = (((($scope.weekendRidershipMARCCamden == "") || ($scope.weekendRidershipMARCCamden == null)) && ($scope.weekendRidershipMARCCamden != 0)) ? null : $scope.weekendRidershipMARCCamden);
+
+        $scope.weekendRidershipMARCBrunswick = activeStationService.getActiveStation()["weekend_ridership_marc_brunswick"];
+        $scope.weekendRidershipMARCBrunswick = (((($scope.weekendRidershipMARCBrunswick == "") || ($scope.weekendRidershipMARCBrunswick == null)) && ($scope.weekendRidershipMARCBrunswick != 0)) ? null : $scope.weekendRidershipMARCBrunswick);
+
+        $scope.weekendRidershipMetro = activeStationService.getActiveStation()["weekend_ridership_metro"];
+        $scope.weekendRidershipMetro = (((($scope.weekendRidershipMetro == "") || ($scope.weekendRidershipMetro == null)) && ($scope.weekendRidershipMetro != 0)) ? null : $scope.weekendRidershipMetro);
+
+        $scope.weekendRidershipLightRail = activeStationService.getActiveStation()["weekend_ridership_light_rail"];
+        $scope.weekendRidershipLightRail = (((($scope.weekendRidershipLightRail == "") || ($scope.weekendRidershipLightRail == null)) && ($scope.weekendRidershipLightRail != 0)) ? null : $scope.weekendRidershipLightRail);
+
+        $scope.frequencyOfServiceWeekdayMARCPenn = activeStationService.getActiveStation()["frequency_of_service_weekday_marc_penn"];
+        $scope.frequencyOfServiceWeekdayMARCPenn = (((($scope.frequencyOfServiceWeekdayMARCPenn == "") || ($scope.frequencyOfServiceWeekdayMARCPenn == null)) && ($scope.frequencyOfServiceWeekdayMARCPenn != 0)) ? null : $scope.frequencyOfServiceWeekdayMARCPenn);
+
+        $scope.frequencyOfServiceWeekdayMARCCamden = activeStationService.getActiveStation()["frequency_of_service_weekday_marc_camden"];
+        $scope.frequencyOfServiceWeekdayMARCCamden = (((($scope.frequencyOfServiceWeekdayMARCCamden == "") || ($scope.frequencyOfServiceWeekdayMARCCamden == null)) && ($scope.frequencyOfServiceWeekdayMARCCamden != 0)) ? null : $scope.frequencyOfServiceWeekdayMARCCamden);
+
+        $scope.frequencyOfServiceWeekdayMARCBrunswick = activeStationService.getActiveStation()["frequency_of_service_weekday_marc_brunswick"];
+        $scope.frequencyOfServiceWeekdayMARCBrunswick = (((($scope.frequencyOfServiceWeekdayMARCBrunswick == "") || ($scope.frequencyOfServiceWeekdayMARCBrunswick == null)) && ($scope.frequencyOfServiceWeekdayMARCBrunswick != 0)) ? null : $scope.frequencyOfServiceWeekdayMARCBrunswick);
+
+        $scope.frequencyOfServiceWeekdayMetro = activeStationService.getActiveStation()["frequency_of_service_weekday_metro"];
+        $scope.frequencyOfServiceWeekdayMetro = (((($scope.frequencyOfServiceWeekdayMetro == "") || ($scope.frequencyOfServiceWeekdayMetro == null)) && ($scope.frequencyOfServiceWeekdayMetro != 0)) ? null : $scope.frequencyOfServiceWeekdayMetro);
+
+        $scope.frequencyOfServiceWeekdayLightRail = activeStationService.getActiveStation()["frequency_of_service_weekday_light_rail"];
+        $scope.frequencyOfServiceWeekdayLightRail = (((($scope.frequencyOfServiceWeekdayLightRail == "") || ($scope.frequencyOfServiceWeekdayLightRail == null)) && ($scope.frequencyOfServiceWeekdayLightRail != 0)) ? null : $scope.frequencyOfServiceWeekdayLightRail);
+
+        $scope.frequencyOfServiceWeekendMARCPenn = activeStationService.getActiveStation()["frequency_of_service_weekend_marc_penn"];
+        $scope.frequencyOfServiceWeekendMARCPenn = (((($scope.frequencyOfServiceWeekendMARCPenn == "") || ($scope.frequencyOfServiceWeekendMARCPenn == null)) && ($scope.frequencyOfServiceWeekendMARCPenn != 0)) ? null : $scope.frequencyOfServiceWeekendMARCPenn);
+
+        $scope.frequencyOfServiceWeekendMARCCamden = activeStationService.getActiveStation()["frequency_of_service_weekend_marc_camden"];
+        $scope.frequencyOfServiceWeekendMARCCamden = (((($scope.frequencyOfServiceWeekendMARCCamden == "") || ($scope.frequencyOfServiceWeekendMARCCamden == null)) && ($scope.frequencyOfServiceWeekendMARCCamden != 0)) ? null : $scope.frequencyOfServiceWeekendMARCCamden);
+
+        $scope.frequencyOfServiceWeekendMARCBrunswick = activeStationService.getActiveStation()["frequency_of_service_weekend_marc_brunswick"];
+        $scope.frequencyOfServiceWeekendMARCBrunswick = (((($scope.frequencyOfServiceWeekendMARCBrunswick == "") || ($scope.frequencyOfServiceWeekendMARCBrunswick == null)) && ($scope.frequencyOfServiceWeekendMARCBrunswick != 0)) ? null : $scope.frequencyOfServiceWeekendMARCBrunswick);
+
+        $scope.frequencyOfServiceWeekendMetro = activeStationService.getActiveStation()["frequency_of_service_weekend_metro"];
+        $scope.frequencyOfServiceWeekendMetro = (((($scope.frequencyOfServiceWeekendMetro == "") || ($scope.frequencyOfServiceWeekendMetro == null)) && ($scope.frequencyOfServiceWeekendMetro != 0)) ? null : $scope.frequencyOfServiceWeekendMetro);
+
+        $scope.frequencyOfServiceWeekendLightRail = activeStationService.getActiveStation()["frequency_of_service_weekend_light_rail"];
+        $scope.frequencyOfServiceWeekendLightRail = (((($scope.frequencyOfServiceWeekendLightRail == "") || ($scope.frequencyOfServiceWeekendLightRail == null)) && ($scope.frequencyOfServiceWeekendLightRail != 0)) ? null : $scope.frequencyOfServiceWeekendLightRail);
+
 
         /*
         Station Facilities
