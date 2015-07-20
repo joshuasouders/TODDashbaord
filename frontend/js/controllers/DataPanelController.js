@@ -135,7 +135,7 @@ app.controller("DataPanelController", ["$scope", "$http", "activeStationService"
         $scope.vehiclesParked2014 = (((($scope.vehiclesParked2014 == "") || ($scope.vehiclesParked2014 == null)) && ($scope.vehiclesParked2014 != 0)) ? "Data Not Avaialable" : $scope.vehiclesParked2014);
 
         $scope.utilizationRate2014 = activeStationService.getActiveStation()["utilization_rate_2014"];
-        $scope.utilizationRate2014 = (((($scope.utilizationRate2014 == "") || ($scope.utilizationRate2014 == null)) && ($scope.utilizationRate2014 != 0)) ? "Data Not Avaialable" : $scope.utilizationRate2014);
+        $scope.utilizationRate2014 = (((($scope.utilizationRate2014 == "") || ($scope.utilizationRate2014 == null)) && ($scope.utilizationRate2014 != 0)) ? "Data Not Avaialable" : $scope.utilizationRate2014 + "%");
 
         $scope.spacesRelativeAverageDailyWeekday = activeStationService.getActiveStation()["spaces_relative_to_number_of_average_daily_riders_weekday_total_lines"];
         $scope.spacesRelativeAverageDailyWeekday = (((($scope.spacesRelativeAverageDailyWeekday == "") || ($scope.spacesRelativeAverageDailyWeekday == null)) && ($scope.spacesRelativeAverageDailyWeekday != 0)) ? "Data Not Avaialable" : $scope.spacesRelativeAverageDailyWeekday);
