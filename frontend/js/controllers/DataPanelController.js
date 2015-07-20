@@ -6,19 +6,19 @@ app.controller("DataPanelController", ["$scope", "$http", "activeStationService"
         */
 
         $scope.totalRailLines = activeStationService.getActiveStation()["total_rail_lines"];
-        $scope.totalRailLines = (((($scope.totalRailLines == "") || ($scope.totalRailLines == null)) && ($scope.totalRailLines != 0)) ? "Data Not Avaialable" : $scope.totalRailLines);
+        $scope.totalRailLines = (((($scope.totalRailLines == "") || ($scope.totalRailLines == null)) && ($scope.totalRailLines != 0)) ? "Data Not Available" : $scope.totalRailLines);
 
         $scope.modesServed = activeStationService.getActiveStation()["modes_served"];
-        $scope.modesServed = (((($scope.modesServed == "") || ($scope.modesServed == null)) && ($scope.modesServed != 0)) ? "Data Not Avaialable" : $scope.modesServed + " Modes Served");
+        $scope.modesServed = (((($scope.modesServed == "") || ($scope.modesServed == null)) && ($scope.modesServed != 0)) ? "Data Not Available" : $scope.modesServed + " Modes Served");
 
         $scope.transitConnections = activeStationService.getActiveStation()["transit_connections"];
-        $scope.transitConnections = (((($scope.transitConnections == "") || ($scope.transitConnections == null)) && ($scope.transitConnections != 0)) ? "Data Not Avaialable" : $scope.transitConnections);
+        $scope.transitConnections = (((($scope.transitConnections == "") || ($scope.transitConnections == null)) && ($scope.transitConnections != 0)) ? "Data Not Available" : $scope.transitConnections);
 
         $scope.busLines = activeStationService.getActiveStation()["connecting_bus_routes"];
-        $scope.busLines = (((($scope.busLines == "") || ($scope.busLines == null)) && ($scope.busLines != 0)) ? "Data Not Avaialable" : $scope.busLines);
+        $scope.busLines = (((($scope.busLines == "") || ($scope.busLines == null)) && ($scope.busLines != 0)) ? "Data Not Available" : $scope.busLines);
 
         $scope.trainLines = activeStationService.getActiveStation()["rail_lines_served"];
-        $scope.trainLines = (((($scope.trainLines == "") || ($scope.trainLines == null)) && ($scope.trainLines != 0)) ? "Data Not Avaialable" : $scope.trainLines);
+        $scope.trainLines = (((($scope.trainLines == "") || ($scope.trainLines == null)) && ($scope.trainLines != 0)) ? "Data Not Available" : $scope.trainLines);
 
         $scope.weekdayRidershipMARCPenn = activeStationService.getActiveStation()["weekday_ridership_marc_penn"];
         $scope.weekdayRidershipMARCPenn = (((($scope.weekdayRidershipMARCPenn == "") || ($scope.weekdayRidershipMARCPenn == null)) && ($scope.weekdayRidershipMARCPenn != 0)) ? null : $scope.weekdayRidershipMARCPenn);
@@ -86,89 +86,89 @@ app.controller("DataPanelController", ["$scope", "$http", "activeStationService"
         */
 
         $scope.trackCrossing = activeStationService.getActiveStation()["track_crossing"];
-        $scope.trackCrossing = (((($scope.trackCrossing == "") || ($scope.trackCrossing == null)) && ($scope.trackCrossing != 0)) ? "Data Not Avaialable" : $scope.trackCrossing);
+        $scope.trackCrossing = (((($scope.trackCrossing == "") || ($scope.trackCrossing == null)) && ($scope.trackCrossing != 0)) ? "Data Not Available" : $scope.trackCrossing);
 
         $scope.scheduleInformation = activeStationService.getActiveStation()["schedule_information"];
-        $scope.scheduleInformation = (((($scope.scheduleInformation == "") || ($scope.scheduleInformation == null)) && ($scope.scheduleInformation != 0)) ? "Data Not Avaialable" : $scope.scheduleInformation);
+        $scope.scheduleInformation = (((($scope.scheduleInformation == "") || ($scope.scheduleInformation == null)) && ($scope.scheduleInformation != 0)) ? "Data Not Available" : $scope.scheduleInformation);
 
         $scope.routeInformation = activeStationService.getActiveStation()["route_information"];
-        $scope.routeInformation = (((($scope.routeInformation == "") || ($scope.routeInformation == null)) && ($scope.routeInformation != 0)) ? "Data Not Avaialable" : $scope.routeInformation);
+        $scope.routeInformation = (((($scope.routeInformation == "") || ($scope.routeInformation == null)) && ($scope.routeInformation != 0)) ? "Data Not Available" : $scope.routeInformation);
 
         $scope.ticketBoothMachine = activeStationService.getActiveStation()["ticket_booth_machine"];
-        $scope.ticketBoothMachine = (((($scope.ticketBoothMachine == "") || ($scope.ticketBoothMachine == null)) && ($scope.ticketBoothMachine != 0)) ? "Data Not Avaialable" : $scope.ticketBoothMachine);
+        $scope.ticketBoothMachine = (((($scope.ticketBoothMachine == "") || ($scope.ticketBoothMachine == null)) && ($scope.ticketBoothMachine != 0)) ? "Data Not Available" : $scope.ticketBoothMachine);
 
         $scope.shelter = activeStationService.getActiveStation()["shelter"];
-        $scope.shelter = (((($scope.shelter == "") || ($scope.shelter == null)) && ($scope.shelter != 0)) ? "Data Not Avaialable" : $scope.shelter);
+        $scope.shelter = (((($scope.shelter == "") || ($scope.shelter == null)) && ($scope.shelter != 0)) ? "Data Not Available" : $scope.shelter);
 
         $scope.benches = activeStationService.getActiveStation()["benches"];
-        $scope.benches = (((($scope.benches == "") || ($scope.benches == null)) && ($scope.benches != 0)) ? "Data Not Avaialable" : $scope.benches);
+        $scope.benches = (((($scope.benches == "") || ($scope.benches == null)) && ($scope.benches != 0)) ? "Data Not Available" : $scope.benches);
 
         $scope.publicRestrooms = activeStationService.getActiveStation()["public_restrooms"];
-        $scope.publicRestrooms = (((($scope.publicRestrooms == "") || ($scope.publicRestrooms == null)) && ($scope.publicRestrooms != 0)) ? "Data Not Avaialable" : $scope.publicRestrooms);
+        $scope.publicRestrooms = (((($scope.publicRestrooms == "") || ($scope.publicRestrooms == null)) && ($scope.publicRestrooms != 0)) ? "Data Not Available" : $scope.publicRestrooms);
 
         $scope.publicPhones = activeStationService.getActiveStation()["public_phones"];
-        $scope.publicPhones = (((($scope.publicPhones == "") || ($scope.publicPhones == null)) && ($scope.publicPhones != 0)) ? "Data Not Avaialable" : $scope.publicPhones);
+        $scope.publicPhones = (((($scope.publicPhones == "") || ($scope.publicPhones == null)) && ($scope.publicPhones != 0)) ? "Data Not Available" : $scope.publicPhones);
 
         /*
         Parking
         */
 
         $scope.parkingSpaces = activeStationService.getActiveStation()["parking_spots_regular"];
-        $scope.parkingSpaces = (((($scope.parkingSpaces == "") || ($scope.parkingSpaces == null)) && ($scope.parkingSpaces != 0)) ? "Data Not Avaialable" : $scope.parkingSpaces + " Parking Spaces");
+        $scope.parkingSpaces = (((($scope.parkingSpaces == "") || ($scope.parkingSpaces == null)) && ($scope.parkingSpaces != 0)) ? "Data Not Available" : $scope.parkingSpaces + " Parking Spaces");
 
         $scope.parkingFee = activeStationService.getActiveStation()["parking_fee"];
-        $scope.parkingFee = (((($scope.parkingFee == "") || ($scope.parkingFee == null)) && ($scope.parkingFee != 0)) ? "Data Not Avaialable" : $scope.parkingFee);
+        $scope.parkingFee = (((($scope.parkingFee == "") || ($scope.parkingFee == null)) && ($scope.parkingFee != 0)) ? "Data Not Available" : $scope.parkingFee);
 
         $scope.parkingSpotsADA = activeStationService.getActiveStation()["parking_spots_ada"];
-        $scope.parkingSpotsADA = (((($scope.parkingSpotsADA == "") || ($scope.parkingSpotsADA == null)) && ($scope.parkingSpotsADA != 0)) ? "Data Not Avaialable" : $scope.parkingSpotsADA);
+        $scope.parkingSpotsADA = (((($scope.parkingSpotsADA == "") || ($scope.parkingSpotsADA == null)) && ($scope.parkingSpotsADA != 0)) ? "Data Not Available" : $scope.parkingSpotsADA);
 
         $scope.evcChargeStations = activeStationService.getActiveStation()["evc_charge_stations"];
-        $scope.evcChargeStations = (((($scope.evcChargeStations == "") || ($scope.evcChargeStations == null)) && ($scope.evcChargeStations != 0)) ? "Data Not Avaialable" : $scope.evcChargeStations);
+        $scope.evcChargeStations = (((($scope.evcChargeStations == "") || ($scope.evcChargeStations == null)) && ($scope.evcChargeStations != 0)) ? "Data Not Available" : $scope.evcChargeStations);
 
         $scope.evcChargeStationsOccupied = activeStationService.getActiveStation()["evc_charge_stations_occupied"];
-        $scope.evcChargeStationsOccupied = (((($scope.evcChargeStationsOccupied == "") || ($scope.evcChargeStationsOccupied == null)) && ($scope.evcChargeStationsOccupied != 0)) ? "Data Not Avaialable" : $scope.evcChargeStationsOccupied);
+        $scope.evcChargeStationsOccupied = (((($scope.evcChargeStationsOccupied == "") || ($scope.evcChargeStationsOccupied == null)) && ($scope.evcChargeStationsOccupied != 0)) ? "Data Not Available" : $scope.evcChargeStationsOccupied);
 
         $scope.vehiclesParked2010 = activeStationService.getActiveStation()["vehicles_parked_2010"];
-        $scope.vehiclesParked2010 = (((($scope.vehiclesParked2010 == "") || ($scope.vehiclesParked2010 == null)) && ($scope.vehiclesParked2010 != 0)) ? "Data Not Avaialable" : $scope.vehiclesParked2010);
+        $scope.vehiclesParked2010 = (((($scope.vehiclesParked2010 == "") || ($scope.vehiclesParked2010 == null)) && ($scope.vehiclesParked2010 != 0)) ? "Data Not Available" : $scope.vehiclesParked2010);
 
         $scope.vehiclesParked2014 = activeStationService.getActiveStation()["vehicles_parked_2014"];
-        $scope.vehiclesParked2014 = (((($scope.vehiclesParked2014 == "") || ($scope.vehiclesParked2014 == null)) && ($scope.vehiclesParked2014 != 0)) ? "Data Not Avaialable" : $scope.vehiclesParked2014);
+        $scope.vehiclesParked2014 = (((($scope.vehiclesParked2014 == "") || ($scope.vehiclesParked2014 == null)) && ($scope.vehiclesParked2014 != 0)) ? "Data Not Available" : $scope.vehiclesParked2014);
 
         $scope.utilizationRate2014 = activeStationService.getActiveStation()["utilization_rate_2014"];
-        $scope.utilizationRate2014 = (((($scope.utilizationRate2014 == "") || ($scope.utilizationRate2014 == null)) && ($scope.utilizationRate2014 != 0)) ? "Data Not Avaialable" : $scope.utilizationRate2014 + "%");
+        $scope.utilizationRate2014 = (((($scope.utilizationRate2014 == "") || ($scope.utilizationRate2014 == null)) && ($scope.utilizationRate2014 != 0)) ? "Data Not Available" : $scope.utilizationRate2014 + "%");
 
         $scope.spacesRelativeAverageDailyWeekday = activeStationService.getActiveStation()["spaces_relative_to_number_of_average_daily_riders_weekday_total_lines"];
-        $scope.spacesRelativeAverageDailyWeekday = (((($scope.spacesRelativeAverageDailyWeekday == "") || ($scope.spacesRelativeAverageDailyWeekday == null)) && ($scope.spacesRelativeAverageDailyWeekday != 0)) ? "Data Not Avaialable" : $scope.spacesRelativeAverageDailyWeekday);
+        $scope.spacesRelativeAverageDailyWeekday = (((($scope.spacesRelativeAverageDailyWeekday == "") || ($scope.spacesRelativeAverageDailyWeekday == null)) && ($scope.spacesRelativeAverageDailyWeekday != 0)) ? "Data Not Available" : $scope.spacesRelativeAverageDailyWeekday);
 
         $scope.spacesRelativeAverageDailyWeekend = activeStationService.getActiveStation()["spaces_relative_to_number_of_average_daily_riders_weekend_total_lines"];
-        $scope.spacesRelativeAverageDailyWeekend = (((($scope.spacesRelativeAverageDailyWeekend == "") || ($scope.spacesRelativeAverageDailyWeekend == null)) && ($scope.spacesRelativeAverageDailyWeekend != 0)) ? "Data Not Avaialable" : $scope.spacesRelativeAverageDailyWeekend);
+        $scope.spacesRelativeAverageDailyWeekend = (((($scope.spacesRelativeAverageDailyWeekend == "") || ($scope.spacesRelativeAverageDailyWeekend == null)) && ($scope.spacesRelativeAverageDailyWeekend != 0)) ? "Data Not Available" : $scope.spacesRelativeAverageDailyWeekend);
 
         $scope.spacesRelativeOtherStations = activeStationService.getActiveStation()["spaces_relative_to_other_stations_on_the_same_line"];
-        $scope.spacesRelativeOtherStations = (((($scope.spacesRelativeOtherStations == "") || ($scope.spacesRelativeOtherStations == null)) && ($scope.spacesRelativeOtherStations != 0)) ? "Data Not Avaialable" : $scope.spacesRelativeOtherStations);
+        $scope.spacesRelativeOtherStations = (((($scope.spacesRelativeOtherStations == "") || ($scope.spacesRelativeOtherStations == null)) && ($scope.spacesRelativeOtherStations != 0)) ? "Data Not Available" : $scope.spacesRelativeOtherStations);
 
         /*
         Pedestrian Access
         */
 
         $scope.intersectionDensity = activeStationService.getActiveStation()["intersection_density_1_mile_diameter"];
-        $scope.intersectionDensity = (((($scope.intersectionDensity == "") || ($scope.intersectionDensity == null)) && ($scope.intersectionDensity != 0)) ? "Data Not Avaialable" : $scope.intersectionDensity);
+        $scope.intersectionDensity = (((($scope.intersectionDensity == "") || ($scope.intersectionDensity == null)) && ($scope.intersectionDensity != 0)) ? "Data Not Available" : $scope.intersectionDensity);
 
         $scope.stoa = activeStationService.getActiveStation()["short_trip_opportunity_analysis_1_mile_buffer"];
-        $scope.stoa = (((($scope.stoa == "") || ($scope.stoa == null)) && ($scope.stoa != 0)) ? "Data Not Avaialable" : $scope.stoa);
+        $scope.stoa = (((($scope.stoa == "") || ($scope.stoa == null)) && ($scope.stoa != 0)) ? "Data Not Available" : $scope.stoa);
 
         /*
         Bicycle Access
         */
 
         $scope.bikeParkingSpaces = activeStationService.getActiveStation()["number_of_bicycle_racks"];
-        $scope.bikeParkingSpaces = (((($scope.bikeParkingSpaces == "") || ($scope.bikeParkingSpaces == null)) && ($scope.bikeParkingSpaces != 0)) ? "Data Not Avaialable" : $scope.bikeParkingSpaces + " Bicycle Racks");
+        $scope.bikeParkingSpaces = (((($scope.bikeParkingSpaces == "") || ($scope.bikeParkingSpaces == null)) && ($scope.bikeParkingSpaces != 0)) ? "Data Not Available" : $scope.bikeParkingSpaces + " Bicycle Racks");
 
 
         $scope.typeBicycleRacks = activeStationService.getActiveStation()["type_of_bicycle_racks"];
-        $scope.typeBicycleRacks = (((($scope.typeBicycleRacks == "") || ($scope.typeBicycleRacks == null)) && ($scope.typeBicycleRacks != 0)) ? "Data Not Avaialable" : $scope.typeBicycleRacks);
+        $scope.typeBicycleRacks = (((($scope.typeBicycleRacks == "") || ($scope.typeBicycleRacks == null)) && ($scope.typeBicycleRacks != 0)) ? "Data Not Available" : $scope.typeBicycleRacks);
 
         $scope.numberBicycleLockers = activeStationService.getActiveStation()["number_of_bicycle_lockers"];
-        $scope.numberBicycleLockers = (((($scope.numberBicycleLockers == "") || ($scope.numberBicycleLockers == null)) && ($scope.numberBicycleLockers != 0)) ? "Data Not Avaialable" : $scope.numberBicycleLockers);
+        $scope.numberBicycleLockers = (((($scope.numberBicycleLockers == "") || ($scope.numberBicycleLockers == null)) && ($scope.numberBicycleLockers != 0)) ? "Data Not Available" : $scope.numberBicycleLockers);
 
         $scope.numberBicycleLockersOccupied = activeStationService.getActiveStation()["number_of_bicycle_lockers_occupied"];
         $scope.numberBicycleLockersOccupied = (((($scope.numberBicycleLockersOccupied == "") || ($scope.numberBicycleLockersOccupied == null)) && ($scope.numberBicycleLockersOccupied != 0)) ? "N/A" : $scope.numberBicycleLockersOccupied);
@@ -178,59 +178,59 @@ app.controller("DataPanelController", ["$scope", "$http", "activeStationService"
         */
 
         $scope.locallyDesignatedTOD = activeStationService.getActiveStation()["locally_designated_tod"];
-        $scope.locallyDesignatedTOD = (((($scope.locallyDesignatedTOD == "") || ($scope.locallyDesignatedTOD == null)) && ($scope.locallyDesignatedTOD != 0)) ? "Data Not Avaialable" : $scope.locallyDesignatedTOD);
+        $scope.locallyDesignatedTOD = (((($scope.locallyDesignatedTOD == "") || ($scope.locallyDesignatedTOD == null)) && ($scope.locallyDesignatedTOD != 0)) ? "Data Not Available" : $scope.locallyDesignatedTOD);
 
         $scope.zoningSummary = activeStationService.getActiveStation()["zoning_summary"];
-        $scope.zoningSummary = (((($scope.zoningSummary == "") || ($scope.zoningSummary == null)) && ($scope.zoningSummary != 0)) ? "Data Not Avaialable" : $scope.zoningSummary);
+        $scope.zoningSummary = (((($scope.zoningSummary == "") || ($scope.zoningSummary == null)) && ($scope.zoningSummary != 0)) ? "Data Not Available" : $scope.zoningSummary);
 
-        $scope.localZoningDescription = activeStationService.getActiveStation()["local_zoning_descriptions"]["url"];
-        $scope.localZoningDescription = (((($scope.localZoningDescription == "") || ($scope.localZoningDescription == null)) && ($scope.localZoningDescription != 0)) ? "Data Not Avaialable" : $scope.localZoningDescription);
+        $scope.localZoningDescription = activeStationService.getActiveStation()["local_zoning_descriptions"];
+        $scope.localZoningDescription = ((typeof $scope.localZoningDescription == "undefined") ? "Data Not Available" : $scope.localZoningDescription['url']);
 
         $scope.areaMasterPlans = activeStationService.getActiveStation()["area_master_plans"];
-        $scope.areaMasterPlans = (((($scope.areaMasterPlans == "") || ($scope.areaMasterPlans == null)) && ($scope.areaMasterPlans != 0)) ? "Data Not Avaialable" : $scope.areaMasterPlans);
+        $scope.areaMasterPlans = (((($scope.areaMasterPlans == "") || ($scope.areaMasterPlans == null)) && ($scope.areaMasterPlans != 0)) ? "Data Not Available" : $scope.areaMasterPlans);
 
         $scope.stateDesignatedTOD = activeStationService.getActiveStation()["state_designated_tod"];
-        $scope.stateDesignatedTOD = (((($scope.stateDesignatedTOD == "") || ($scope.stateDesignatedTOD == null)) && ($scope.stateDesignatedTOD != 0)) ? "Data Not Avaialable" : $scope.stateDesignatedTOD);
+        $scope.stateDesignatedTOD = (((($scope.stateDesignatedTOD == "") || ($scope.stateDesignatedTOD == null)) && ($scope.stateDesignatedTOD != 0)) ? "Data Not Available" : $scope.stateDesignatedTOD);
 
         $scope.jurisdiction = activeStationService.getActiveStation()["jurisdiction"];
-        $scope.jurisdiction = (((($scope.jurisdiction == "") || ($scope.jurisdiction == null)) && ($scope.jurisdiction != 0)) ? "Data Not Avaialable" : $scope.jurisdiction);
+        $scope.jurisdiction = (((($scope.jurisdiction == "") || ($scope.jurisdiction == null)) && ($scope.jurisdiction != 0)) ? "Data Not Available" : $scope.jurisdiction);
 
         $scope.todPlaceType = activeStationService.getActiveStation()["tod_place_type"];
-        $scope.todPlaceType = (((($scope.todPlaceType == "") || ($scope.todPlaceType == null)) && ($scope.todPlaceType != 0)) ? "Data Not Avaialable" : $scope.todPlaceType);
+        $scope.todPlaceType = (((($scope.todPlaceType == "") || ($scope.todPlaceType == null)) && ($scope.todPlaceType != 0)) ? "Data Not Available" : $scope.todPlaceType);
 
         /*
         Development Market
         */
 
         $scope.residentialAlterationsUnits = activeStationService.getActiveStation()["residential_alterations_units"];
-        $scope.residentialAlterationsUnits = (((($scope.residentialAlterationsUnits == "") || ($scope.residentialAlterationsUnits == null)) && ($scope.residentialAlterationsUnits != 0)) ? "Data Not Avaialable" : $scope.residentialAlterationsUnits);
+        $scope.residentialAlterationsUnits = (((($scope.residentialAlterationsUnits == "") || ($scope.residentialAlterationsUnits == null)) && ($scope.residentialAlterationsUnits != 0)) ? "Data Not Available" : $scope.residentialAlterationsUnits);
 
         $scope.residentialAlterationsPermits = activeStationService.getActiveStation()["residentail_alterations_permits"];
-        $scope.residentialAlterationsPermits = (((($scope.residentialAlterationsPermits == "") || ($scope.residentialAlterationsPermits == null)) && ($scope.residentialAlterationsPermits != 0)) ? "Data Not Avaialable" : $scope.residentialAlterationsPermits);
+        $scope.residentialAlterationsPermits = (((($scope.residentialAlterationsPermits == "") || ($scope.residentialAlterationsPermits == null)) && ($scope.residentialAlterationsPermits != 0)) ? "Data Not Available" : $scope.residentialAlterationsPermits);
 
         $scope.residentialNewConstructionPermits = activeStationService.getActiveStation()["residential_new_construction_permits"];
-        $scope.residentialNewConstructionPermits = (((($scope.residentialNewConstructionPermits == "") || ($scope.residentialNewConstructionPermits == null)) && ($scope.residentialNewConstructionPermits != 0)) ? "Data Not Avaialable" : $scope.residentialNewConstructionPermits);
+        $scope.residentialNewConstructionPermits = (((($scope.residentialNewConstructionPermits == "") || ($scope.residentialNewConstructionPermits == null)) && ($scope.residentialNewConstructionPermits != 0)) ? "Data Not Available" : $scope.residentialNewConstructionPermits);
 
         $scope.residentialNewConstructionUnits = activeStationService.getActiveStation()["residential_new_construction_units"];
-        $scope.residentialNewConstructionUnits = (((($scope.residentialNewConstructionUnits == "") || ($scope.residentialNewConstructionUnits == null)) && ($scope.residentialNewConstructionUnits != 0)) ? "Data Not Avaialable" : $scope.residentialNewConstructionUnits);
+        $scope.residentialNewConstructionUnits = (((($scope.residentialNewConstructionUnits == "") || ($scope.residentialNewConstructionUnits == null)) && ($scope.residentialNewConstructionUnits != 0)) ? "Data Not Available" : $scope.residentialNewConstructionUnits);
 
         $scope.nonResidentialAlterationsPermits = activeStationService.getActiveStation()["non_residential_alterations_permits"];
-        $scope.nonResidentialAlterationsPermits = (((($scope.nonResidentialAlterationsPermits == "") || ($scope.nonResidentialAlterationsPermits == null)) && ($scope.nonResidentialAlterationsPermits != 0)) ? "Data Not Avaialable" : $scope.nonResidentialAlterationsPermits);
+        $scope.nonResidentialAlterationsPermits = (((($scope.nonResidentialAlterationsPermits == "") || ($scope.nonResidentialAlterationsPermits == null)) && ($scope.nonResidentialAlterationsPermits != 0)) ? "Data Not Available" : $scope.nonResidentialAlterationsPermits);
 
         $scope.nonResidentialNewConstructionPermits = activeStationService.getActiveStation()["non_residentail_new_contruction_permits"];
-        $scope.nonResidentialNewConstructionPermits = (((($scope.nonResidentialNewConstructionPermits == "") || ($scope.nonResidentialNewConstructionPermits == null)) && ($scope.nonResidentialNewConstructionPermits != 0)) ? "Data Not Avaialable" : $scope.nonResidentialNewConstructionPermits);
+        $scope.nonResidentialNewConstructionPermits = (((($scope.nonResidentialNewConstructionPermits == "") || ($scope.nonResidentialNewConstructionPermits == null)) && ($scope.nonResidentialNewConstructionPermits != 0)) ? "Data Not Available" : $scope.nonResidentialNewConstructionPermits);
 
         $scope.mixedUseNewConstructionPermits = activeStationService.getActiveStation()["mixed_use_new_construction_permits"];
-        $scope.mixedUseNewConstructionPermits = (((($scope.mixedUseNewConstructionPermits == "") || ($scope.mixedUseNewConstructionPermits == null)) && ($scope.mixedUseNewConstructionPermits != 0)) ? "Data Not Avaialable" : $scope.mixedUseNewConstructionPermits);
+        $scope.mixedUseNewConstructionPermits = (((($scope.mixedUseNewConstructionPermits == "") || ($scope.mixedUseNewConstructionPermits == null)) && ($scope.mixedUseNewConstructionPermits != 0)) ? "Data Not Available" : $scope.mixedUseNewConstructionPermits);
 
         $scope.mixedUseNewConstructionUnits = activeStationService.getActiveStation()["mixed_use_new_construction_units"];
-        $scope.mixedUseNewConstructionUnits = (((($scope.mixedUseNewConstructionUnits == "") || ($scope.mixedUseNewConstructionUnits == null)) && ($scope.mixedUseNewConstructionUnits != 0)) ? "Data Not Avaialable" : $scope.mixedUseNewConstructionUnits);
+        $scope.mixedUseNewConstructionUnits = (((($scope.mixedUseNewConstructionUnits == "") || ($scope.mixedUseNewConstructionUnits == null)) && ($scope.mixedUseNewConstructionUnits != 0)) ? "Data Not Available" : $scope.mixedUseNewConstructionUnits);
 
         $scope.countOfMDPropertyViewParcels = activeStationService.getActiveStation()["count_of_md_property_view_parcels"];
-        $scope.countOfMDPropertyViewParcels = (((($scope.countOfMDPropertyViewParcels == "") || ($scope.countOfMDPropertyViewParcels == null)) && ($scope.countOfMDPropertyViewParcels != 0)) ? "Data Not Avaialable" : $scope.countOfMDPropertyViewParcels);
+        $scope.countOfMDPropertyViewParcels = (((($scope.countOfMDPropertyViewParcels == "") || ($scope.countOfMDPropertyViewParcels == null)) && ($scope.countOfMDPropertyViewParcels != 0)) ? "Data Not Available" : $scope.countOfMDPropertyViewParcels);
 
         $scope.cumulativeCompositeScore = activeStationService.getActiveStation()["cumulative_composite_score_yearblt_score_x_sqftstrc_score"];
-        $scope.cumulativeCompositeScore = (((($scope.cumulativeCompositeScore == "") || ($scope.cumulativeCompositeScore == null)) && ($scope.cumulativeCompositeScore != 0)) ? "Data Not Avaialable" : $scope.cumulativeCompositeScore);
+        $scope.cumulativeCompositeScore = (((($scope.cumulativeCompositeScore == "") || ($scope.cumulativeCompositeScore == null)) && ($scope.cumulativeCompositeScore != 0)) ? "Data Not Available" : $scope.cumulativeCompositeScore);
 
     });
 }]);

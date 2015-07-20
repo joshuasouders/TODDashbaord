@@ -522,7 +522,8 @@
             </tr>
             <tr>
               <td>Local Zoning Description</td>
-              <td><a ng-href="{{localZoningDescription}}" target="_blank">{{localZoningDescription}}</a></td>
+              <td><a ng-if='localZoningDescription != "Data Not Available"' ng-href="{{localZoningDescription}}" target="_blank">{{localZoningDescription}}</a>
+              <span ng-if='localZoningDescription == "Data Not Available"'>{{localZoningDescription}}</span></td>
             </tr>
             <tr>
               <td>Area Master Plans</td>
