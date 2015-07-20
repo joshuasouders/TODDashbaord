@@ -22,7 +22,6 @@ app.controller('SearchController', ['$scope', 'stationService', 'activeStationSe
 		//stations = stations.concat(additionalStations);
 		$scope.stationJSON = [];
 		$scope.stationJSON = $scope.stationJSON.concat(stations);
-		console.log($scope.stationJSON);
 
 		$scope.stationJSON.sort(function(a, b){
 		    return a['station_name'] < b['station_name'] ? -1 : a['station_name'] > b['station_name'] ? 1 : 0;
