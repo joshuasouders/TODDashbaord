@@ -70,7 +70,7 @@ app.controller("MapController", [ "$scope", "$rootScope", "$http", "stationServi
             "type": "station"
         },
         {
-            "name": "Potential Development Area",
+            "name": "MDOT Designated TOD Sites",
             "color": "#FF0000",
             "type": "polygon"
         }
