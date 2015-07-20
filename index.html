@@ -47,7 +47,7 @@
      <div ng-controller="SearchController" class="search-nav">
       <ui-select ng-model="selectedStation.selected" id="search" style="width: 300px;">
       <ui-select-match placeholder="Select a Station">{{$select.selected['station_name'].split(" (")[0]}}</ui-select-match>
-      <ui-select-choices group-by="groupByFunction" repeat='station in stationJSON track by station["station_name"] | filter: $select.search'>
+      <ui-select-choices group-by="groupByFunction" repeat='station in stationJSON | filter: $select.search'>
       <div ng-bind-html="station['station_name'] | highlight: $select.search">
         {{station['station_name']}}
       </div>
